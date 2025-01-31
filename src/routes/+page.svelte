@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { invoke } from '@tauri-apps/api/core';
-  const readDiskDirectory =async () => {
-    console.log('readDiskDirectory');
-    const res = await invoke('read_disk_directory');
+  import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+  import AppSidebar from '$lib/components/app-sidebar.svelte';
 
-  };
+  let { children } = $props();
 </script>
 
-<main class="container">
-  <s-button onclick={readDiskDirectory} tabindex="0" role="button" onkeydown={readDiskDirectory}>
-    读取磁盘目录
-  </s-button>
-</main>
+<Sidebar.Provider>
+  <AppSidebar />
+  <main>
+    <Sidebar.Trigger />
+    {@render children?.()}
+  </main>
+</Sidebar.Provider>
