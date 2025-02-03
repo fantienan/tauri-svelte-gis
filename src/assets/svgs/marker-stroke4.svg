@@ -1,0 +1,85 @@
+
+    <svg class="marker-svg-1 smap-marker-4" xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="min-width: 50px;min-height: 50px">
+      <foreignObject width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
+        ><div xmlns="http://www.w3.org/1999/xhtml" class="marker-wrap-3" data-index="56315" style="float: left; padding: 2px">
+          <div class="marker-wrap marker-wrap-1" style="position: relative; width: 46px; height: 46px">
+            <div calss="marker-wrap marker-wrap-2" style="display: block; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1; width: 46px; height: 46px">
+              <!--?xml version="1.0" encoding="UTF-8"?-->
+              <svg
+              class="marker-svg-2"
+                width="46px"
+                height="46px"
+                viewBox="0 0 70 70"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <title>五角星扎点</title>
+                <defs>
+                  <rect id="path-1" x="0" y="0" width="70" height="70" />
+                  <path
+                    d="M37.3775642,12.7573301 L55.344073,26.0369235 C56.8858767,27.1765175 57.4022521,29.2498366 56.5750456,30.9794501 L48.0876504,48.725822 C47.4230376,50.1154667 46.0195104,51 44.4791135,51 L38.662,50.999 L38.6483107,51.0550679 L35.7604499,59.7186502 C35.6806642,59.9580074 35.4928405,60.1458311 35.2534833,60.2256168 C34.8334984,60.3656118 34.379545,60.1386351 34.2395501,59.7186502 L31.3516893,51.0550679 C31.3455619,51.0366858 31.3401101,51.0181086 31.3353398,50.9993737 L25.5208865,51 C23.9804896,51 22.5769624,50.1154667 21.9123496,48.725822 L13.4249544,30.9794501 C12.5977479,29.2498366 13.1141233,27.1765175 14.655927,26.0369235 L32.6224358,12.7573301 C34.0354393,11.7129362 35.9645607,11.7129362 37.3775642,12.7573301 Z"
+                    id="path-3"
+                  />
+                  <filter x="-23.8%" y="-21.9%" width="147.6%" height="144.4%" filterUnits="objectBoundingBox" id="filter-4">
+                    <feMorphology radius="3" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
+                    <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
+                    <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner" />
+                    <feOffset dx="0" dy="0" in="shadowInner" result="shadowInner" />
+                    <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1" />
+                    <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+                    <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.201158217 0" type="matrix" in="shadowBlurOuter1" />
+                  </filter>
+                  <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-#4265FF-#4265FF-pentagram">
+                    <stop stop-color="#4265FF" offset="0%" />
+                    <stop stop-color="#4265FF" offset="100%" />
+                  </linearGradient>
+                </defs>
+                <g id="五角星扎点" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g>
+                    <use xlink:href="#path-1" />
+                    <g id="蒙版" />
+                    <path
+                      d="M35,66 C38.8659932,66 42,63.9852814 42,61.5 C42,59.0147186 38.8659932,57 35,57 C31.1340068,57 28,59.0147186 28,61.5 C28,63.9852814 31.1340068,66 35,66 Z"
+                      id="椭圆形"
+                      fill-opacity="0.1"
+                      fill="#000000"
+                      mask="url(#mask-2)"
+                    />
+                    <g id="形状结合" mask="url(#mask-2)">
+                      <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3" />
+                      <path
+                        stroke="#FFFFFF"
+                        stroke-width="3"
+                        d="M35,10.4740347 C36.1488555,10.4740347 37.2977109,10.8330451 38.2691508,11.5510659 L56.2356596,24.8306593 C57.2956496,25.6141302 58.0031487,26.7185691 58.3034741,27.9244175 C58.6037995,29.130266 58.4969514,30.4375241 57.928247,31.6266333 L49.4408517,49.3730052 C48.9839305,50.328386 48.2730073,51.1101347 47.4115588,51.6530382 C46.5501103,52.1959417 45.5381363,52.5 44.4788556,52.5 L39.7436653,52.499186 L37.1834749,60.1929919 C36.9543867,60.8802565 36.4150896,61.4195536 35.727825,61.6486418 C35.124875,61.8496251 34.4975417,61.7871876 33.9707001,61.5237668 C33.4438584,61.2603459 33.0175084,60.7959418 32.8165251,60.1929919 L30.2671586,52.5448922 L25.5132446,52.4999947 C24.4569958,52.4985357 23.4478174,52.1946357 22.5884412,51.6530382 C21.7269927,51.1101347 21.0160695,50.328386 20.5591483,49.3730052 L12.071753,31.6266333 C11.5030486,30.4375241 11.3962005,29.130266 11.6965259,27.9244175 C11.9968513,26.7185691 12.7043504,25.6141302 13.7643404,24.8306593 L31.7308492,11.5510659 C32.7022891,10.8330451 33.8511445,10.4740347 35,10.4740347 Z"
+                      />
+                    </g>
+                    <path
+                      d="M37.3775642,12.7573301 L55.344073,26.0369235 C56.8858767,27.1765175 57.4022521,29.2498366 56.5750456,30.9794501 L48.0876504,48.725822 C47.4230376,50.1154667 46.0195104,51 44.4791135,51 L38.662,51 L38.6483107,51.0550679 L35.7604499,59.7186502 C35.6806642,59.9580074 35.4928405,60.1458311 35.2534833,60.2256168 C34.8334984,60.3656118 34.379545,60.1386351 34.2395501,59.7186502 L31.3516893,51.0550679 C31.3456714,51.0370141 31.340305,51.018772 31.335596,51.0003772 L25.5208865,51 C23.9804896,51 22.5769624,50.1154667 21.9123496,48.725822 L13.4249544,30.9794501 C12.5977479,29.2498366 13.1141233,27.1765175 14.655927,26.0369235 L32.6224358,12.7573301 C34.0354393,11.7129362 35.9645607,11.7129362 37.3775642,12.7573301 Z"
+                      id="形状结合"
+                      fill="url(#linearGradient-#4265FF-#4265FF-pentagram)"
+                      mask="url(#mask-2)"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <div
+              class="center-dot"
+              style="
+                position: absolute;
+                z-index: 2;
+                border-radius: 50%;
+                background-color: #fff;
+                width: 10px;
+                height: 10px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -6px);
+              "
+            >
+            </div>
+          </div>
+        </div></foreignObject
+      >
+    </svg>

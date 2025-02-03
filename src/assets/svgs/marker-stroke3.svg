@@ -1,0 +1,85 @@
+
+    <svg class="marker-svg-1 smap-marker-3" xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="min-width: 50px;min-height: 50px">
+      <foreignObject width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
+        ><div xmlns="http://www.w3.org/1999/xhtml" class="marker-wrap-3" data-index="56315" style="float: left; padding: 2px">
+          <div class="marker-wrap marker-wrap-1" style="position: relative; width: 46px; height: 46px">
+            <div class="marker-wrap marker-wrap-2" style="display: block; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1; width: 46px; height: 46px">
+              <!--?xml version="1.0" encoding="UTF-8"?-->
+              <svg
+              class="marker-svg-2"
+                width="46px"
+                height="46px"
+                viewBox="0 0 70 70"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <title>方形大头针扎点</title>
+                <defs>
+                  <rect id="path-1" x="0" y="0" width="70" height="70" />
+                  <path
+                    d="M47,12 C51.418278,12 55,15.581722 55,20 L55,44 C55,48.418278 51.418278,52 47,52 L37,52 L37,58 C37,59.1045695 36.1045695,60 35,60 C33.8954305,60 33,59.1045695 33,58 L33,52 L23,52 C18.581722,52 15,48.418278 15,44 L15,20 C15,15.581722 18.581722,12 23,12 L47,12 Z"
+                    id="path-3"
+                  />
+                  <filter x="-26.2%" y="-21.9%" width="152.5%" height="143.8%" filterUnits="objectBoundingBox" id="filter-4">
+                    <feMorphology radius="3" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
+                    <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
+                    <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner" />
+                    <feOffset dx="0" dy="0" in="shadowInner" result="shadowInner" />
+                    <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1" />
+                    <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+                    <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.201158217 0" type="matrix" in="shadowBlurOuter1" />
+                  </filter>
+                  <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-#4265FF-#4265FF-square-pin">
+                    <stop stop-color="#4265FF" offset="0%" />
+                    <stop stop-color="#4265FF" offset="100%" />
+                  </linearGradient>
+                </defs>
+                <g id="方形大头针扎点" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g>
+                    <use xlink:href="#path-1" />
+                    <g id="蒙版" />
+                    <path
+                      d="M35,66 C38.8659932,66 42,63.9852814 42,61.5 C42,59.0147186 38.8659932,57 35,57 C31.1340068,57 28,59.0147186 28,61.5 C28,63.9852814 31.1340068,66 35,66 Z"
+                      id="椭圆形"
+                      fill-opacity="0.1"
+                      fill="#000000"
+                      mask="url(#mask-2)"
+                    />
+                    <g id="形状结合" mask="url(#mask-2)">
+                      <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3" />
+                      <path
+                        stroke="#FFFFFF"
+                        stroke-width="3"
+                        d="M47,10.5 C49.6233526,10.5 51.9983526,11.5633237 53.7175144,13.2824856 C55.4366763,15.0016474 56.5,17.3766474 56.5,20 L56.5,44 C56.5,46.6233526 55.4366763,48.9983526 53.7175144,50.7175144 C51.9983526,52.4366763 49.6233526,53.5 47,53.5 L38.5,53.5 L38.5,58 C38.5,58.9664983 38.1082492,59.8414983 37.4748737,60.4748737 C36.8414983,61.1082492 35.9664983,61.5 35,61.5 C34.0335017,61.5 33.1585017,61.1082492 32.5251263,60.4748737 C31.8917508,59.8414983 31.5,58.9664983 31.5,58 L31.5,53.5 L23,53.5 C20.3766474,53.5 18.0016474,52.4366763 16.2824856,50.7175144 C14.5633237,48.9983526 13.5,46.6233526 13.5,44 L13.5,20 C13.5,17.3766474 14.5633237,15.0016474 16.2824856,13.2824856 C18.0016474,11.5633237 20.3766474,10.5 23,10.5 Z"
+                      />
+                    </g>
+                    <path
+                      d="M47,12 C51.418278,12 55,15.581722 55,20 L55,44 C55,48.418278 51.418278,52 47,52 L37,52 L37,58 C37,59.1045695 36.1045695,60 35,60 C33.8954305,60 33,59.1045695 33,58 L33,52 L23,52 C18.581722,52 15,48.418278 15,44 L15,20 C15,15.581722 18.581722,12 23,12 L47,12 Z"
+                      id="形状结合"
+                      fill="url(#linearGradient-#4265FF-#4265FF-square-pin)"
+                      mask="url(#mask-2)"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <div
+              class="center-dot"
+              style="
+                position: absolute;
+                z-index: 2;
+                border-radius: 50%;
+                background-color: #fff;
+                width: 10px;
+                height: 10px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -7px);
+              "
+            >
+            </div>
+          </div>
+        </div></foreignObject
+      >
+    </svg>

@@ -9,7 +9,7 @@ import type {
   MapEventType,
   MapLayerEventType,
   MarkerOptions,
-  RasterLayer,
+  RasterLayer
 } from 'mapbox-gl';
 import type {
   DrawCreateEvent,
@@ -30,22 +30,30 @@ import type {
   DrawClearSelectedCoordinatesEvent,
   DrawAddPointEvent,
   DrawUndoEvent,
-  DrawButtonStatusChangeEvent,
+  DrawButtonStatusChangeEvent
 } from '@ttfn/mapbox-gl-draw';
-import type { IDanmakuRenderer } from '@/compnents/danmaku';
-import type { IMarkerFeature, IMarkerFeatureEvent, IMarkerFeatureFindEvent } from '../marker-feature';
+import type { IDanmakuRenderer } from '@/components/danmaku';
+import type {
+  IMarkerFeature,
+  IMarkerFeatureEvent,
+  IMarkerFeatureFindEvent
+} from '../marker-feature';
 import type { IGeoJsonSourceChangeEvent, IGeoJsonSourceHelper } from '../sources';
 import type { IMapBaseKitEvent } from '../base-kit';
 import type { IFeatureHelper } from '../feature';
 import type { IMapMarker } from '../map-marker';
 import type { IIconImage } from '../icon-image';
 import type { IGeographyPhotos, IGeographyPhotosEvent } from '../geography-photos';
-import type { IAiDiscern, IAiDiscernChangeEvent, IAiDiscernCreateEvent } from '../ai-discern';
-import { AllGeoJSON } from '@turf/turf';
+import type { AllGeoJSON } from '@turf/turf';
 
-type ISMapUtilReplaceTheMap<T extends Record<string, any> = any> = Omit<T, 'target'> & { target: ISMap };
+type ISMapUtilReplaceTheMap<T extends Record<string, any> = any> = Omit<T, 'target'> & {
+  target: ISMap;
+};
 
-type ISMapUtilEvent<T extends { type: string; target: ISMap; [k: string]: any }> = Record<T['type'], T>;
+type ISMapUtilEvent<T extends { type: string; target: ISMap; [k: string]: any }> = Record<
+  T['type'],
+  T
+>;
 
 export interface ISMap extends Map {
   /** 复位 */
@@ -67,16 +75,18 @@ export interface ISMap extends Map {
   /** 地理照片 */
   geographyPhotos: IGeographyPhotos;
   /** ui层交互 */
-  dispatch: <T extends keyof ISMapKitEventType>(data: { type: T } & Omit<ISMapEventCallbackParameter<T>, 'target'>) => void;
+  dispatch: <T extends keyof ISMapKitEventType>(
+    data: { type: T } & Omit<ISMapEventCallbackParameter<T>, 'target'>
+  ) => void;
   /** 标记 */
-  markerFactory: { create: (element?: HTMLElement | MarkerOptions, options?: mapboxgl.MarkerOptions) => IMapMarker };
+  markerFactory: {
+    create: (element?: HTMLElement | MarkerOptions, options?: mapboxgl.MarkerOptions) => IMapMarker;
+  };
   /** 根据图层zIndex, top 排序 */
   orderLayer: () => void;
   setLayerVisibleBySource: (sourceId: string, visible: boolean) => void;
   /** 根据图形定位 */
   fitByGeometry: (geometry: AllGeoJSON, options?: FitBoundsOptions) => void;
-  /** ai识别 */
-  aiDiscern: IAiDiscern;
 
   updateImage: (
     name: string,
@@ -86,7 +96,7 @@ export interface ISMap extends Map {
       | { width: number; height: number; data: Uint8Array | Uint8ClampedArray }
       | ImageData
       | ImageBitmap
-      | string,
+      | string
   ) => void;
   addImage: (
     name: string,
@@ -103,38 +113,58 @@ export interface ISMap extends Map {
       stretchX?: Array<[number, number]> | undefined;
       stretchY?: Array<[number, number]> | undefined;
       content?: [number, number, number, number] | undefined;
-    },
+    }
   ) => void;
 
-  on<T extends keyof ISMapKitEventType>(type: T, listener: (ev: ISMapEventCallbackParameter<T>) => void): this;
-  once<T extends keyof ISMapKitEventType>(type: T, listener: (ev: ISMapEventCallbackParameter<T>) => void): this;
-  off<T extends keyof ISMapKitEventType>(type: T, listener: (ev: ISMapEventCallbackParameter<T>) => void): this;
-  fire<T extends keyof ISMapKitEventType>(type: T, properties?: ISMapEventCallbackParameter<T>): this;
+  on<T extends keyof ISMapKitEventType>(
+    type: T,
+    listener: (ev: ISMapEventCallbackParameter<T>) => void
+  ): this;
+  once<T extends keyof ISMapKitEventType>(
+    type: T,
+    listener: (ev: ISMapEventCallbackParameter<T>) => void
+  ): this;
+  off<T extends keyof ISMapKitEventType>(
+    type: T,
+    listener: (ev: ISMapEventCallbackParameter<T>) => void
+  ): this;
+  fire<T extends keyof ISMapKitEventType>(
+    type: T,
+    properties?: ISMapEventCallbackParameter<T>
+  ): this;
   fire(type: string, properties?: Record<string, any>): this;
-  on<T extends keyof MapEventType>(type: T, listener: (ev: Omit<MapEventType[T], 'target'> & { target: ISMap } & EventData) => void): this;
+  on<T extends keyof MapEventType>(
+    type: T,
+    listener: (ev: Omit<MapEventType[T], 'target'> & { target: ISMap } & EventData) => void
+  ): this;
   on<T extends keyof MapLayerEventType>(
     type: T,
     layer: string | readonly string[],
-    listener: (ev: Omit<MapLayerEventType[T], 'target'> & { target: ISMap } & EventData) => void,
+    listener: (ev: Omit<MapLayerEventType[T], 'target'> & { target: ISMap } & EventData) => void
   ): this;
   on(type: string, listener: (ev: any) => void): this;
   once<T extends keyof MapLayerEventType>(
     type: T,
     layer: string | readonly string[],
-    listener: (ev: Omit<MapLayerEventType[T], 'target'> & { target: ISMap } & EventData) => void,
+    listener: (ev: Omit<MapLayerEventType[T], 'target'> & { target: ISMap } & EventData) => void
   ): this;
   once<T extends keyof MapEventType>(
     type: T,
-    listener: (ev: Omit<MapEventType[T], 'target'> & { target: ISMap } & EventData) => void,
+    listener: (ev: Omit<MapEventType[T], 'target'> & { target: ISMap } & EventData) => void
   ): this;
   once(type: string, listener: (ev: any) => void): this;
-  once<T extends keyof MapEventType>(type: T): Promise<Omit<MapEventType[T], 'target'> & { target: ISMap }>;
+  once<T extends keyof MapEventType>(
+    type: T
+  ): Promise<Omit<MapEventType[T], 'target'> & { target: ISMap }>;
   off<T extends keyof MapLayerEventType>(
     type: T,
     layer: string | readonly string[],
-    listener: (ev: Omit<MapLayerEventType[T], 'target'> & { target: ISMap } & EventData) => void,
+    listener: (ev: Omit<MapLayerEventType[T], 'target'> & { target: ISMap } & EventData) => void
   ): this;
-  off<T extends keyof MapEventType>(type: T, listener: (ev: Omit<MapEventType[T], 'target'> & { target: ISMap } & EventData) => void): this;
+  off<T extends keyof MapEventType>(
+    type: T,
+    listener: (ev: Omit<MapEventType[T], 'target'> & { target: ISMap } & EventData) => void
+  ): this;
   off(type: string, listener: (ev: any) => void): this;
 }
 
@@ -162,8 +192,6 @@ export type ISMapKitEventType = ISMapUtilEvent<IMapBaseKitEvent> &
   ISMapUtilEvent<ISMapUtilReplaceTheMap<DrawAddPointEvent>> &
   ISMapUtilEvent<ISMapUtilReplaceTheMap<DrawButtonStatusChangeEvent>> &
   ISMapUtilEvent<ISMapUtilReplaceTheMap<DrawUndoEvent>> &
-  ISMapUtilEvent<ISMapUtilReplaceTheMap<IAiDiscernChangeEvent>> &
-  ISMapUtilEvent<ISMapUtilReplaceTheMap<IAiDiscernCreateEvent>> &
   ISMapUtilEvent<ISMapUtilReplaceTheMap<IGeoJsonSourceChangeEvent>>;
 
 export type ISMapEventType = MapEventType & ISMapKitEventType & MapLayerEventType;
@@ -182,46 +210,46 @@ export type ISMapGeoJsonSource = GeoJSONSource & IGeoJsonSourceHelper;
 export type ISMapEventCallbackParameter<T> = T extends keyof ISMapKitEventType
   ? ISMapKitEventType[T]
   : T extends keyof MapLayerEventType
-  ? Omit<MapLayerEventType[T], 'target'> & { target: ISMap } & EventData
-  : T extends keyof MapEventType
-  ? Omit<MapEventType[T], 'target'> & { target: ISMap }
-  : T extends keyof DrawCreateEvent
-  ? DrawCreateEvent[T]
-  : T extends keyof DrawDeleteEvent
-  ? DrawDeleteEvent[T]
-  : T extends keyof DrawCombineEvent
-  ? DrawCombineEvent[T]
-  : T extends keyof DrawUncombineEvent
-  ? DrawUncombineEvent[T]
-  : T extends keyof DrawUpdateEvent
-  ? DrawUpdateEvent[T]
-  : T extends keyof DrawSelectionChangeEvent
-  ? DrawSelectionChangeEvent[T]
-  : T extends keyof DrawModeChangeEvent
-  ? DrawModeChangeEvent[T]
-  : T extends keyof DrawRenderEvent
-  ? DrawRenderEvent[T]
-  : T extends keyof DrawActionableEvent
-  ? DrawActionableEvent[T]
-  : T extends keyof DrawOnAddEvent
-  ? DrawOnAddEvent[T]
-  : T extends keyof DrawClickOnVertexEvent
-  ? DrawClickOnVertexEvent[T]
-  : T extends keyof DrawOnMidpointEvent
-  ? DrawOnMidpointEvent[T]
-  : T extends keyof DrawDragVertexEvent
-  ? DrawDragVertexEvent[T]
-  : T extends keyof DrawClickOrTabEvent
-  ? DrawClickOrTabEvent[T]
-  : T extends keyof DrawDragEvent
-  ? DrawDragEvent[T]
-  : T extends keyof DrawClearSelectedCoordinatesEvent
-  ? DrawClearSelectedCoordinatesEvent[T]
-  : T extends keyof DrawAddPointEvent
-  ? DrawAddPointEvent[T]
-  : T extends keyof DrawUndoEvent
-  ? DrawUndoEvent[T]
-  : unknown;
+    ? Omit<MapLayerEventType[T], 'target'> & { target: ISMap } & EventData
+    : T extends keyof MapEventType
+      ? Omit<MapEventType[T], 'target'> & { target: ISMap }
+      : T extends keyof DrawCreateEvent
+        ? DrawCreateEvent[T]
+        : T extends keyof DrawDeleteEvent
+          ? DrawDeleteEvent[T]
+          : T extends keyof DrawCombineEvent
+            ? DrawCombineEvent[T]
+            : T extends keyof DrawUncombineEvent
+              ? DrawUncombineEvent[T]
+              : T extends keyof DrawUpdateEvent
+                ? DrawUpdateEvent[T]
+                : T extends keyof DrawSelectionChangeEvent
+                  ? DrawSelectionChangeEvent[T]
+                  : T extends keyof DrawModeChangeEvent
+                    ? DrawModeChangeEvent[T]
+                    : T extends keyof DrawRenderEvent
+                      ? DrawRenderEvent[T]
+                      : T extends keyof DrawActionableEvent
+                        ? DrawActionableEvent[T]
+                        : T extends keyof DrawOnAddEvent
+                          ? DrawOnAddEvent[T]
+                          : T extends keyof DrawClickOnVertexEvent
+                            ? DrawClickOnVertexEvent[T]
+                            : T extends keyof DrawOnMidpointEvent
+                              ? DrawOnMidpointEvent[T]
+                              : T extends keyof DrawDragVertexEvent
+                                ? DrawDragVertexEvent[T]
+                                : T extends keyof DrawClickOrTabEvent
+                                  ? DrawClickOrTabEvent[T]
+                                  : T extends keyof DrawDragEvent
+                                    ? DrawDragEvent[T]
+                                    : T extends keyof DrawClearSelectedCoordinatesEvent
+                                      ? DrawClearSelectedCoordinatesEvent[T]
+                                      : T extends keyof DrawAddPointEvent
+                                        ? DrawAddPointEvent[T]
+                                        : T extends keyof DrawUndoEvent
+                                          ? DrawUndoEvent[T]
+                                          : unknown;
 
 export type ISMapLayerMetadata = {
   top: boolean;

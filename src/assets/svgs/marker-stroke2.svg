@@ -1,0 +1,84 @@
+
+    <svg class="marker-svg-1 smap-marker-2" xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="min-width: 50px;min-height: 50px">
+      <foreignObject width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
+        ><div xmlns="http://www.w3.org/1999/xhtml" class="marker-wrap-3" data-index="56315" style="float: left; padding: 2px">
+          <div class="marker-wrap marker-wrap-1" style="position: relative; width: 46px; height: 46px">
+            <div class="marker-wrap marker-wrap-2" style="display: block; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1; width: 46px; height: 46px">
+              <!--?xml version="1.0" encoding="UTF-8"?-->
+              <svg
+                class="marker-svg-2"
+                width="46px"
+                height="46px"
+                viewBox="0 0 70 70"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <title>大头针</title>
+                <defs>
+                  <rect id="path-1" x="0" y="0" width="70" height="70" />
+                  <path
+                    d="M35,12 C46.045695,12 55,20.954305 55,32 C55,41.4083399 48.5036145,49.2993677 39.7518455,51.4320813 C38.1539835,51.7837943 37.0124289,53.1936987 37.0014056,54.8290321 L37.0002532,55 L37,58 C37,59.1045695 36.1045695,60 35,60 C33.8954305,60 33,59.1045695 33,58 L33,54.734 L32.9943546,54.590273 C32.8918657,53.1245272 31.8758177,51.8792935 30.4604425,51.4847968 L30.273606,51.4382171 L30.2380023,51.4303715 C21.4914364,49.2933548 15,41.4047555 15,32 C15,20.954305 23.954305,12 35,12 Z"
+                    id="path-3"
+                  />
+                  <filter x="-26.2%" y="-21.9%" width="152.5%" height="143.8%" filterUnits="objectBoundingBox" id="filter-4">
+                    <feMorphology radius="3" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
+                    <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
+                    <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner" />
+                    <feOffset dx="0" dy="0" in="shadowInner" result="shadowInner" />
+                    <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1" />
+                    <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+                    <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.201158217 0" type="matrix" in="shadowBlurOuter1" />
+                  </filter>
+                  <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-#4265FF-#4265FF-pin">
+                    <stop stop-color="#4265FF" offset="0%" />
+                    <stop stop-color="#4265FF" offset="100%" />
+                  </linearGradient>
+                </defs>
+                <g id="大头针" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="椭圆形">
+                    <use xlink:href="#path-1" />
+                    <g id="蒙版" />
+                    <path
+                      d="M35,66 C38.8659932,66 42,63.9852814 42,61.5 C42,59.0147186 38.8659932,57 35,57 C31.1340068,57 28,59.0147186 28,61.5 C28,63.9852814 31.1340068,66 35,66 Z"
+                      fill-opacity="0.1"
+                      fill="#000000"
+                      mask="url(#mask-2)"
+                    />
+                    <g id="形状结合" mask="url(#mask-2)">
+                      <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3" />
+                      <path
+                        stroke="#FFFFFF"
+                        stroke-width="3"
+                        d="M35,10.5 C40.9370611,10.5 46.3120611,12.9064695 50.2027958,16.7972042 C54.0935305,20.6879389 56.5,26.0629389 56.5,32 C56.5,37.0041645 54.7901241,41.6088692 51.9233245,45.2622873 C48.9956516,48.9932816 44.8604483,51.7310649 40.1069868,52.8894333 C39.6173505,52.9975937 39.2256068,53.2494301 38.9473442,53.5931004 C38.6692492,53.9365636 38.5045222,54.3717418 38.5014055,54.829697 L38.5,58 C38.5,58.9664983 38.1082492,59.8414983 37.4748737,60.4748737 C36.8414983,61.1082492 35.9664983,61.5 35,61.5 C34.0335017,61.5 33.1585017,61.1082492 32.5251263,60.4748737 C31.8917508,59.8414983 31.5,58.9664983 31.5,58 L31.5,54.7899422 C31.4613693,54.3307428 31.3056821,53.9191217 31.0511872,53.5935117 C30.8045661,53.2779756 30.4664179,53.0470162 30.0715497,52.933876 C25.2332346,51.7439564 21.0699117,49.007456 18.1269944,45.2984971 C15.2183606,41.6327457 13.5,37.0171164 13.5,32 C13.5,26.0629389 15.9064695,20.6879389 19.7972042,16.7972042 C23.6879389,12.9064695 29.0629389,10.5 35,10.5 Z"
+                      />
+                    </g>
+                    <path
+                      d="M35,12 C46.045695,12 55,20.954305 55,32 C55,41.4083399 48.5036145,49.2993677 39.7518455,51.4320813 C38.1539839,51.7833191 37.0124302,53.1932241 37.0014087,54.8285571 L37.0002532,55 L37,58 C37,59.1045695 36.1045695,60 35,60 C33.8954305,60 33,59.1045695 33,58 L33,54.734 L32.9943546,54.590273 C32.8918657,53.1245272 31.8758177,51.8792935 30.4604425,51.4847968 L30.273606,51.4382171 L30.2380023,51.4303715 C21.4914364,49.2933548 15,41.4047555 15,32 C15,20.954305 23.954305,12 35,12 Z"
+                      id="形状结合"
+                      fill="url(#linearGradient-#4265FF-#4265FF-pin)"
+                      mask="url(#mask-2)"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <div
+              class="center-dot"
+              style="
+                position: absolute;
+                z-index: 2;
+                border-radius: 50%;
+                background-color: #fff;
+                width: 10px;
+                height: 10px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -7px);
+              "
+            >
+            </div>
+          </div>
+        </div></foreignObject
+      >
+    </svg>

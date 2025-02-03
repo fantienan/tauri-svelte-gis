@@ -1,0 +1,45 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="103" height="103">
+  <foreignObject width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink" ><div xmlns="http://www.w3.org/1999/xhtml" data-index="88120" style="float: left; padding: 2px">
+    <div style="position: relative; width: 99px; height: 99px">
+      <div style="display: block; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1; width: 99px; height: 99px">
+        <svg width="99px" height="99px" viewBox="0 0 70 70" >
+          <defs>
+            <polygon id="path-1" points="4.97379915e-13 -1.33209416e-13 70 -1.33209416e-13 70 70 2.11313606e-13 70" />
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient">
+              <stop stop-color="#E1361B" offset="0%" />
+              <stop stop-color="#E1361B" offset="100%" />
+            </linearGradient>
+          </defs>
+          <g id="大方型扎点" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g>
+              <use xlink:href="#path-1" />
+              <g id="蒙版" />
+              <ellipse id="椭圆形" fill-opacity="0.1" fill="#000000" mask="url(#mask-2)" cx="35" cy="61.5" rx="7" ry="4.5" />
+              <path
+                d="M46.7444592,10 C50.3105342,10 51.6036791,10.3713024 52.9073828,11.0685308 C54.2110865,11.7657592 55.2342408,12.7889135 55.9314692,14.0926172 C56.6286976,15.3963209 57,16.6894658 57,20.2555408 L57,43.7444592 C57,47.3105342 56.6286976,48.6036791 55.9314692,49.9073828 C55.2342408,51.2110865 54.2110865,52.2342408 52.9073828,52.9314692 C51.6036791,53.6286976 50.3105342,54 46.7444592,54 L43.5505872,53.9990413 C43.4122233,54.1123684 43.2821344,54.2372467 43.1618511,54.3729874 L36.9318089,61.4036475 C36.1992503,62.2303467 34.935222,62.3066627 34.1085228,61.574104 C34.0764372,61.5456721 34.045274,61.5162159 34.0150816,61.4857811 L26.8209823,54.233929 C26.7385996,54.150885 26.652362,54.072549 26.5626877,53.9990952 L23.2555408,54 C19.6894658,54 18.3963209,53.6286976 17.0926172,52.9314692 C15.7889135,52.2342408 14.7657592,51.2110865 14.0685308,49.9073828 C13.3713024,48.6036791 13,47.3105342 13,43.7444592 L13,20.2555408 C13,16.6894658 13.3713024,15.3963209 14.0685308,14.0926172 C14.7657592,12.7889135 15.7889135,11.7657592 17.0926172,11.0685308 C18.3963209,10.3713024 19.6894658,10 23.2555408,10 L46.7444592,10 Z"
+                id="形状结合"
+                fill="url(#linearGradient)"
+                mask="url(#mask-2)"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <img
+        style="
+          display: block;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -60%);
+          z-index: 2;
+          width: 36px;
+          height: 36px;
+          border-radius: 0;
+        "
+        src="data:image/png;base64,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"
+      />
+    </div>
+  </foreignObject>
+</svg>

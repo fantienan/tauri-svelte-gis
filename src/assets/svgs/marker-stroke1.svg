@@ -1,0 +1,80 @@
+
+    <svg class="marker-svg-1 smap-marker-1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="min-width: 50px;min-height: 50px">
+      <foreignObject width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
+        ><div xmlns="http://www.w3.org/1999/xhtml" class="marker-wrap-3" data-index="56315" style="float: left; padding: 2px">
+          <div class="marker-wrap marker-wrap-1" style="position: relative; width: 46px; height: 46px">
+            <div class="marker-wrap marker-wrap-2" style="display: block; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1; width: 46px; height: 46px">
+              <!--?xml version="1.0" encoding="UTF-8"?-->
+              <svg
+                class="marker-svg-2"
+                width="46px"
+                height="46px"
+                viewBox="0 0 70 70"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <title>水滴</title>
+                <defs>
+                  <rect id="path-1" x="0" y="0" width="70" height="70" />
+                  <path
+                    d="M49.1421356,17.9501047 C56.872101,25.8017893 56.9517914,38.4815924 49.3812067,46.4328258 L49.1421356,46.6797518 L35.7115178,60.279521 C35.3234449,60.6724814 34.6902924,60.6764436 34.2973319,60.2883707 C34.2943636,60.2854393 34.2914136,60.2824894 34.2884822,60.279521 L20.8578644,46.6797518 L20.8578644,46.6797518 C13.0473785,38.7462788 13.0473785,25.8835777 20.8578644,17.9501047 C28.6683502,10.0166318 41.3316498,10.0166318 49.1421356,17.9501047 Z"
+                    id="path-3"
+                  />
+                  <filter x="-26.2%" y="-21.4%" width="152.5%" height="142.0%" filterUnits="objectBoundingBox" id="filter-4">
+                    <feMorphology radius="3" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
+                    <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
+                    <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+                    <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1" />
+                    <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.201158217 0" type="matrix" in="shadowBlurOuter1" />
+                  </filter>
+                  <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-#4265FF-#4265FF-water-drop">
+                    <stop stop-color="#4265FF" offset="0%" />
+                    <stop stop-color="#4265FF" offset="100%" />
+                  </linearGradient>
+                </defs>
+                <g id="水滴" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="椭圆形-+-路径-+-路径蒙版">
+                    <use xlink:href="#path-1" />
+                    <g id="蒙版" />
+                    <ellipse id="椭圆形" fill-opacity="0.1" fill="#000000" mask="url(#mask-2)" cx="35" cy="61.5" rx="7" ry="4.5" />
+                    <g id="路径" mask="url(#mask-2)">
+                      <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3" />
+                      <path
+                        stroke="#FFFFFF"
+                        stroke-width="3"
+                        d="M35,10.5 C40.504783,10.5 46.0106336,12.6312056 50.2110487,16.8977622 C54.3556018,21.1075771 56.4529006,26.6101142 56.4992158,32.128058 C56.5456476,37.6599071 54.5305272,43.2052496 50.4580299,47.4771578 L36.7787945,61.3335231 C36.2937034,61.8247237 35.6554375,62.0728003 35.0156443,62.076804 C34.3723235,62.0808298 33.7274586,61.8380839 33.2352189,61.3476015 L19.7889513,47.7320943 C15.5976169,43.4747614 13.5,37.8953406 13.5,32.3149283 C13.5,26.734516 15.5976169,21.1550951 19.7889513,16.8977622 C23.9893664,12.6312056 29.495217,10.5 35,10.5 Z"
+                        fill="#E2E2E2"
+                        fill-rule="evenodd"
+                      />
+                    </g>
+                    <path
+                      d="M49.1421356,17.9501047 C56.872101,25.8017893 56.9517914,38.4815924 49.3812067,46.4328258 L49.1421356,46.6797518 L35.7115178,60.279521 C35.3234449,60.6724814 34.6902924,60.6764436 34.2973319,60.2883707 C34.2943636,60.2854393 34.2914136,60.2824894 34.2884822,60.279521 L20.8578644,46.6797518 L20.8578644,46.6797518 C13.0473785,38.7462788 13.0473785,25.8835777 20.8578644,17.9501047 C28.6683502,10.0166318 41.3316498,10.0166318 49.1421356,17.9501047 Z"
+                      id="路径"
+                      fill="url(#linearGradient-#4265FF-#4265FF-water-drop)"
+                      mask="url(#mask-2)"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <div
+              class="center-dot"
+              style="
+                position: absolute;
+                z-index: 2;
+                border-radius: 50%;
+                background-color: #fff;
+                width: 10px;
+                height: 10px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -6px);
+              "
+            >
+            </div>
+          </div>
+        </div></foreignObject
+      >
+    </svg>
+

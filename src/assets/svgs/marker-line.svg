@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="103" height="103">
+  <foreignObject width="100%" height="100%">
+    <div style="float: left; padding: 2px">
+      <div style="position: relative; width: 99px; height: 99px">
+        <div style="display: block; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1; width: 99px; height: 99px">
+          <svg
+            width="99px"
+            height="99px"
+            viewBox="0 0 70 70"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <title>大方型扎点</title>
+            <defs>
+              <polygon id="path-1" points="4.97379915e-13 -1.33209416e-13 70 -1.33209416e-13 70 70 2.11313606e-13 70" />
+              <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-#7E97FF-#4265FF">
+                <stop stop-color="#E1361B" offset="0%" />
+                <stop stop-color="#E1361B" offset="100%" />
+              </linearGradient>
+            </defs>
+            <g id="大方型扎点" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g>
+                <use xlink:href="#path-1" />
+                <g id="蒙版" />
+                <ellipse id="椭圆形" fill-opacity="0.1" fill="#000000" mask="url(#mask-2)" cx="35" cy="61.5" rx="7" ry="4.5" />
+                <path
+                  d="M46.7444592,10 C50.3105342,10 51.6036791,10.3713024 52.9073828,11.0685308 C54.2110865,11.7657592 55.2342408,12.7889135 55.9314692,14.0926172 C56.6286976,15.3963209 57,16.6894658 57,20.2555408 L57,43.7444592 C57,47.3105342 56.6286976,48.6036791 55.9314692,49.9073828 C55.2342408,51.2110865 54.2110865,52.2342408 52.9073828,52.9314692 C51.6036791,53.6286976 50.3105342,54 46.7444592,54 L43.5505872,53.9990413 C43.4122233,54.1123684 43.2821344,54.2372467 43.1618511,54.3729874 L36.9318089,61.4036475 C36.1992503,62.2303467 34.935222,62.3066627 34.1085228,61.574104 C34.0764372,61.5456721 34.045274,61.5162159 34.0150816,61.4857811 L26.8209823,54.233929 C26.7385996,54.150885 26.652362,54.072549 26.5626877,53.9990952 L23.2555408,54 C19.6894658,54 18.3963209,53.6286976 17.0926172,52.9314692 C15.7889135,52.2342408 14.7657592,51.2110865 14.0685308,49.9073828 C13.3713024,48.6036791 13,47.3105342 13,43.7444592 L13,20.2555408 C13,16.6894658 13.3713024,15.3963209 14.0685308,14.0926172 C14.7657592,12.7889135 15.7889135,11.7657592 17.0926172,11.0685308 C18.3963209,10.3713024 19.6894658,10 23.2555408,10 L46.7444592,10 Z"
+                  id="形状结合"
+                  fill="url(#linearGradient-#7E97FF-#4265FF)"
+                  mask="url(#mask-2)"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <img
+          style="
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -60%);
+            z-index: 2;
+            width: 36px;
+            height: 36px;
+            border-radius: 0;
+          "
+          src="data:image/png;base64,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"
+          alt=""
+        />
+      </div>
+    </div>
+  </foreignObject>
+</svg>

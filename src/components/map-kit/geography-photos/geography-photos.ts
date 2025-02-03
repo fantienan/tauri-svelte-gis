@@ -1,5 +1,5 @@
 import { featureCollection } from '@turf/turf';
-import { image2Base64 } from '../utils';
+import { image2Base64 } from '@/utils';
 import tplSvg from './tpl.svg?raw';
 import { BaseKit } from '../base-kit';
 import type { Feature } from 'geojson';

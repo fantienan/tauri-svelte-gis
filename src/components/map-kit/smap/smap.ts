@@ -36,7 +36,9 @@ type IInternalModule<T = any> = ISMapModule<T> & {
   ][];
 };
 
-const { SM_MAPBOX_TOKEN, SM_GEOVIS_TOKEN } = import.meta.env;
+const SM_MAPBOX_TOKEN =
+  'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY20xdXM1OWQ5MDQ5MDJrb2U1cGcyazR6MiJ9.ZtSFvLFKtrwOt01u-COlYg';
+const SM_GEOVIS_TOKEN = '62d17dd1bcd9b6b4cde180133d80aa420446c9d132f88cb84c29d51e77d01c4c';
 
 const defaultMapOptions: MapboxOptions = {
   container: 'map',
@@ -305,10 +307,6 @@ export class SMap extends Map implements ISMap {
 
   get geographyPhotos() {
     return this._modules['geography-photos'].value as ISMap['geographyPhotos'];
-  }
-
-  get aiDiscern() {
-    return this._modules['ai-discern'].value as ISMap['aiDiscern'];
   }
 
   addModule: ISMap['addModule'] = (module) => {

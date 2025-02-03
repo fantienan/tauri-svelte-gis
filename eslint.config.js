@@ -5,6 +5,7 @@ import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript-eslint';
+
 const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
 export default ts.config(
@@ -20,6 +21,9 @@ export default ts.config(
         ...globals.browser,
         ...globals.node
       }
+    },
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'warn'
     }
   },
   {
