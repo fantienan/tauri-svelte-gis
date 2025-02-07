@@ -5,7 +5,6 @@
   let name = $state('1');
   let greetMsg = $state('');
   let params = page.params;
-  debugger;
   async function greet(event: Event) {
     event.preventDefault();
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/

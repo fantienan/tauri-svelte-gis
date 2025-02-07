@@ -55,7 +55,7 @@
     "@types/mapbox-gl": "^3.4.1",
     "@types/wellknown": "^0.5.8",
     "autoprefixer": "^10.4.20",
-    "bits-ui": "1.0.0-next.81",
+    "bits-ui": "1.0.0-next.86",
     "clsx": "^2.1.1",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",

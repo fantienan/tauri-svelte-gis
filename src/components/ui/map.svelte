@@ -39,4 +39,4 @@
 </script>
 
 <svelte:window onresize={onWindowResize} />
-<div bind:this={mapElement} id="map" class="flex h-screen w-screen"></div>
+<div bind:this={mapElement} id="map" class="flex h-full w-full"></div>

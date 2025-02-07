@@ -11,11 +11,6 @@
   } from './constants.js';
   import { setSidebar } from './context.svelte.js';
 
-  export type SiderbarProviderProps = WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    open?: boolean;
-    onOpenChange?: (open: boolean) => void;
-  };
-
   let {
     ref = $bindable(null),
     open = $bindable(true),
@@ -24,7 +19,10 @@
     style,
     children,
     ...restProps
-  }: SiderbarProviderProps = $props();
+  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
+    open?: boolean;
+    onOpenChange?: (open: boolean) => void;
+  } = $props();
 
   const sidebar = setSidebar({
     open: () => open,
@@ -44,7 +42,7 @@
   <div
     style="--sidebar-width: {SIDEBAR_WIDTH}; --sidebar-width-icon: {SIDEBAR_WIDTH_ICON}; {style}"
     class={cn(
-      'group/sidebar-wrapper absolute flex min-h-svh has-[[data-variant=inset]]:bg-sidebar',
+      'group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar',
       className
     )}
     bind:this={ref}

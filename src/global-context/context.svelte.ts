@@ -1,17 +1,20 @@
 import { getContext, setContext } from 'svelte';
-import { type ISMap } from '@/components/map-kit';
+import { writable } from 'svelte/store';
+import type { ISMap } from '@/components/map-kit';
 
 class GlobalState {
-  #smap = $state<ISMap>();
+  // 使用 writable 初始化状态
+  smap = writable<ISMap | null>(null);
+  sidebarOpen = writable<boolean | null>(null);
 
   constructor() {}
   setSMap = (value: ISMap) => {
-    this.#smap = value;
+    this.smap.set(value);
   };
 
-  get smap() {
-    return this.#smap;
-  }
+  setSidebarOpen = (value: boolean) => {
+    this.sidebarOpen.set(value);
+  };
 }
 
 const SYMBOL_KEY = 'global-state';
@@ -20,6 +23,6 @@ export function setGlobalState(): GlobalState {
   return setContext(Symbol.for(SYMBOL_KEY), new GlobalState());
 }
 
-export function useSidebar(): GlobalState {
+export function useGlobalState(): GlobalState {
   return getContext(Symbol.for(SYMBOL_KEY));
 }
