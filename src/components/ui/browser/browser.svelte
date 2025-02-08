@@ -80,7 +80,7 @@
         </Collapsible.Trigger>
         <Collapsible.Content>
           {#if Array.isArray(item.children)}
-            <Sidebar.MenuSub>
+            <Sidebar.MenuSub class="mr-0 pr-0">
               {#each item.children as subItem (subItem.path)}
                 {@render Tree({ item: subItem })}
               {/each}
