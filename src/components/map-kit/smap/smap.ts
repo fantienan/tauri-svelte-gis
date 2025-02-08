@@ -28,6 +28,7 @@ import type {
   ISMapRasterLayerSpecifcation
 } from './types';
 import { bbox } from '@turf/turf';
+import { getConfig } from '@/utils';
 
 type IInternalModule<T = any> = ISMapModule<T> & {
   queue: [
@@ -36,9 +37,7 @@ type IInternalModule<T = any> = ISMapModule<T> & {
   ][];
 };
 
-const SM_MAPBOX_TOKEN =
-  'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY20xdXM1OWQ5MDQ5MDJrb2U1cGcyazR6MiJ9.ZtSFvLFKtrwOt01u-COlYg';
-const SM_GEOVIS_TOKEN = '62d17dd1bcd9b6b4cde180133d80aa420446c9d132f88cb84c29d51e77d01c4c';
+const { SM_GEOVIS_TOKEN, SM_MAPBOX_TOKEN } = getConfig();
 
 const defaultMapOptions: MapboxOptions = {
   container: 'map',

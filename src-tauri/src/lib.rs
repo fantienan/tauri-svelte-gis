@@ -53,24 +53,23 @@ fn init_window_config(app_handle: &tauri::AppHandle) -> Result<(), Box<dyn std::
   }
 }
 
+// #[tauri::command]
+// fn upload_shape_file(filename: &str) {
+//   // 示例：上传shape file
+//   if let Err(e) = map_server::upload_shape_file(filename) {
+//     eprintln!("Error uploading shape file: {}", e);
+//   }
 
-#[tauri::command]
-fn upload_shape_file(filename: &str) {
-  // 示例：上传shape file
-  if let Err(e) = map_server::upload_shape_file(filename) {
-    eprintln!("Error uploading shape file: {}", e);
-  }
+//   // 示例：发布矢量地图服务
+//   if let Err(e) = map_server::publish_vector_map_service() {
+//     eprintln!("Error publishing vector map service: {}", e);
+//   }
 
-  // 示例：发布矢量地图服务
-  if let Err(e) = map_server::publish_vector_map_service() {
-    eprintln!("Error publishing vector map service: {}", e);
-  }
-
-  // 示例：属性查询
-  if let Err(e) = map_server::query_attributes() {
-    eprintln!("Error querying attributes: {}", e);
-  }
-}
+//   // 示例：属性查询
+//   if let Err(e) = map_server::query_attributes() {
+//     eprintln!("Error querying attributes: {}", e);
+//   }
+// }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -80,8 +79,10 @@ pub fn run() {
     .plugin(tauri_plugin_log_init())
     .plugin(tauri_plugin_shell::init())
     .plugin(tauri_plugin_opener::init())
-    .invoke_handler(tauri::generate_handler![common::disk::read_disk_directory])
-    .invoke_handler(tauri::generate_handler![upload_shape_file])
+    .invoke_handler(tauri::generate_handler![
+      common::disk::read_disk_directory,
+      map_server::upload_shape_file
+    ])
     .setup(|app| {
       init_window_config(&app.handle())?;
       Ok(())

@@ -1,5 +1,6 @@
 pub mod shape_file;
 
+#[tauri::command]
 pub fn upload_shape_file(file_path: &str) -> Result<(), String> {
   shape_file::read_shape_file(file_path);
   Ok(())

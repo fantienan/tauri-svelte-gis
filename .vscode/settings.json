@@ -3,5 +3,6 @@
   "prettier.requireConfig": true,
   "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "bitoAI.codeCompletion.enableAutoCompletion": false,
     //  "editor.defaultFormatter": "svelte.svelte-vscode"
 }

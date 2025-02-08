@@ -7,17 +7,6 @@
   let diskDir = $state<DriveRecord[]>([]);
   let currentPath = $state<string | null>(null);
 
-  const onReadDiskDirectory = async (path?: string) => {
-    const res = await readDiskDirectory(path);
-    if (!res.success) {
-      console.error(res.msg);
-
-      return;
-    }
-    diskDir = res.data.filter((item) => item.name);
-    currentPath = path || null;
-  };
-
   const goUpOneLevel = () => {
     if (currentPath) {
       if (/^[A-Z]:$/.test(currentPath) || /^[A-Z]:\\$/.test(currentPath)) {

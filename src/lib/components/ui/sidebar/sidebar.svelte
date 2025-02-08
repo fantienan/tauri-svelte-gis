@@ -13,6 +13,7 @@
     collapsible = 'offcanvas',
     class: className,
     children,
+    ontransitionend,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     side?: 'left' | 'right';
@@ -67,6 +68,7 @@
           ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]'
           : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]'
       )}
+      {ontransitionend}
     ></div>
     <div
       class={cn(

@@ -3,17 +3,13 @@ import { writable } from 'svelte/store';
 import type { ISMap } from '@/components/map-kit';
 
 class GlobalState {
-  // 使用 writable 初始化状态
-  smap = writable<ISMap | null>(null);
-  sidebarOpen = writable<boolean | null>(null);
+  mapLoaded = writable<boolean | null>(null);
+  smap: ISMap | null = null;
 
   constructor() {}
   setSMap = (value: ISMap) => {
-    this.smap.set(value);
-  };
-
-  setSidebarOpen = (value: boolean) => {
-    this.sidebarOpen.set(value);
+    this.mapLoaded.set(true);
+    this.smap = value;
   };
 }
 
