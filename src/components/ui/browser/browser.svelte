@@ -1,28 +1,31 @@
 <script lang="ts">
+  import { toast } from 'svelte-sonner';
   import * as Collapsible from '$lib/components/ui/collapsible/index.js';
   import * as Sidebar from '$lib/components/ui/sidebar/index.js';
   import { readDiskDirectory } from '@/services';
-  import type { DriveRecord } from '@/types';
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
+  import HardDrive from 'lucide-svelte/icons/hard-drive';
   import File from 'lucide-svelte/icons/file';
   import Folder from 'lucide-svelte/icons/folder';
   import FolderOpen from 'lucide-svelte/icons/folder-open';
   import { onMount, type ComponentProps } from 'svelte';
+  import type { DriveRecord } from '@/types';
+  import { traverseTree } from '@/utils';
 
   let diskDirTree = $state<DriveRecord[]>([]);
 
   const onReadDiskDirectory = async (path?: string) => {
     const res = await readDiskDirectory(path);
     if (!res.success) {
-      console.error(res.msg);
+      toast.error(res.msg);
       return [];
     }
+    // 根据type排序，drive、
     return res.data.filter((item) => item.name);
   };
 
   onMount(async () => {
-    const res = await onReadDiskDirectory();
-    diskDirTree = res;
+    diskDirTree = await onReadDiskDirectory();
   });
 </script>
 
@@ -34,7 +37,7 @@
   {#if item.type === 'file'}
     <Sidebar.MenuButton class="data-[active=true]:bg-transparent">
       <File />
-      {item.name}
+      <span class="truncate">{item.name}</span>
     </Sidebar.MenuButton>
   {:else}
     <Sidebar.MenuItem>
@@ -46,27 +49,43 @@
           {#snippet child({ props })}
             <Sidebar.MenuButton
               {...props}
-              onclick={(e) => {
+              onclick={async (e) => {
                 (props as any).onclick(e);
-                onReadDiskDirectory(item.path);
+                if (props['aria-expanded'] === 'false') return;
+                const res = await onReadDiskDirectory(item.path);
+                const data = $state.snapshot(diskDirTree);
+                traverseTree({
+                  data,
+                  cb: (node) => {
+                    if (node.item.path === item.path) {
+                      node.item.children = res;
+                      return true;
+                    }
+                  }
+                });
+                diskDirTree = data;
               }}
             >
               <ChevronRight className="transition-transform" />
-              {#if props['aria-expanded'] === 'true'}
+              {#if item.type === 'drive'}
+                <HardDrive />
+              {:else if props['aria-expanded'] === 'true'}
                 <FolderOpen />
               {:else}
                 <Folder />
               {/if}
-              {item.name}
+              <span class="truncate">{item.name}</span>
             </Sidebar.MenuButton>
           {/snippet}
         </Collapsible.Trigger>
         <Collapsible.Content>
-          <!-- <Sidebar.MenuSub>
-            {#each item as subItem, index (index)}
-              {@render Tree({ item: subItem })}
-            {/each}
-          </Sidebar.MenuSub> -->
+          {#if Array.isArray(item.children)}
+            <Sidebar.MenuSub>
+              {#each item.children as subItem (subItem.path)}
+                {@render Tree({ item: subItem })}
+              {/each}
+            </Sidebar.MenuSub>
+          {/if}
         </Collapsible.Content>
       </Collapsible.Root>
     </Sidebar.MenuItem>

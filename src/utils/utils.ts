@@ -41,8 +41,8 @@ type ITraverseTreeParams<T extends Record<string, any> = any> = {
 export function traverseTree<T extends Record<string, any> = any>(params: ITraverseTreeParams<T>) {
   const { data, cb, fieldNames = { children: 'children' } } = params;
   return each(data, (item, index) => {
-    cb?.({ item, parent: data, index });
-    if (Array.isArray(item[fieldNames.children]))
+    const flag = cb?.({ item, parent: data, index });
+    if (!flag && Array.isArray(item[fieldNames.children]))
       traverseTree({ data: item[fieldNames.children], fieldNames, cb });
   });
 }

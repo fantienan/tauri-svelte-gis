@@ -1,5 +1,6 @@
 export type DriveRecord = {
   name: string;
   path: string;
-  type: 'drive' | 'directory' | 'file';
+  type: 'drive' | 'folder' | 'file';
+  children?: DriveRecord[];
 };

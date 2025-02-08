@@ -15,6 +15,8 @@ pub fn get_root_drives() -> Result<Vec<serde_json::Value>, io::Error> {
 }
 
 pub fn scan_drives(drives: &[String], entries: &mut Vec<serde_json::Value>) {
+  let mut folder_entries = Vec::new();
+  let mut file_entries = Vec::new();
   for drive in drives {
     println!("Scanning drive: {}", drive);
     for entry in WalkDir::new(drive).max_depth(1).min_depth(1) {
@@ -22,11 +24,29 @@ pub fn scan_drives(drives: &[String], entries: &mut Vec<serde_json::Value>) {
         Ok(entry) => {
           println!("{}", entry.path().display().to_string());
           let path = entry.path().display().to_string();
-          let entry_type = if entry.path().is_dir() { "directory" } else { "file" };
+          let entry_type = if entry.path().is_dir() { "folder" } else { "file" };
           if let Some(file_name) = entry.path().file_name() {
-            entries.push(serde_json::json!({ "path": path, "name": file_name.to_string_lossy().to_string(), "type": entry_type }));
+            let json_entry = serde_json::json!({
+              "path": path,
+              "name": file_name.to_string_lossy().to_string(),
+              "type": entry_type
+            });
+            if entry_type == "folder" {
+              folder_entries.push(json_entry);
+            } else {
+              file_entries.push(json_entry);
+            }
           } else {
-            entries.push(serde_json::json!({ "path": path, "name": "", "type": entry_type }));
+            let json_entry = serde_json::json!({
+              "path": path,
+              "name": "",
+              "type": entry_type
+            });
+            if entry_type == "folder" {
+              folder_entries.push(json_entry);
+            } else {
+              file_entries.push(json_entry);
+            }
           }
         }
         Err(e) => {
@@ -35,6 +55,9 @@ pub fn scan_drives(drives: &[String], entries: &mut Vec<serde_json::Value>) {
       }
     }
   }
+  // 先添加文件夹，再添加文件
+  entries.extend(folder_entries);
+  entries.extend(file_entries);
 }
 
 #[tauri::command]

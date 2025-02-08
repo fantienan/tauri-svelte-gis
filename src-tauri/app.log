@@ -179,3 +179,26 @@
 [2025-02-08][06:07:50][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
 [2025-02-08][06:07:57][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
 [2025-02-08][06:07:57][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-02-08][06:45:39][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:45:55][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:45:55][tao::platform_impl::platform::keyboard][TRACE] Received a CHAR message but no `event_info` was available. The message is probably IME, returning.
+[2025-02-08][06:45:55][tao::platform_impl::platform::keyboard][TRACE] Received a CHAR message but no `event_info` was available. The message is probably IME, returning.
+[2025-02-08][06:45:55][tao::platform_impl::platform::keyboard][TRACE] Received a CHAR message but no `event_info` was available. The message is probably IME, returning.
+[2025-02-08][06:46:16][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:46:22][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:46:27][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:46:33][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:47:00][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:47:08][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:47:13][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:47:18][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][06:59:23][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-02-08][07:03:12][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-02-08][07:03:12][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-02-08][07:13:37][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-02-08][07:13:37][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-02-08][07:21:23][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-02-08][07:21:23][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-02-08][07:24:28][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-02-08][07:24:28][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-02-08][07:28:39][tauri_app_lib][INFO] Init Window config injected successfully
