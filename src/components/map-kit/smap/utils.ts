@@ -3,7 +3,11 @@ window.__biz__fetch__ = window.fetch;
 export const interceptRequest = (placeHolder: string) => {
   window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {
     try {
-      if (input instanceof Request && typeof input.url === 'string' && input.url.includes(placeHolder)) {
+      if (
+        input instanceof Request &&
+        typeof input.url === 'string' &&
+        input.url.includes(placeHolder)
+      ) {
         return Promise.resolve(new Response(null, { status: 200, statusText: 'OK' }));
       }
     } catch (e) {

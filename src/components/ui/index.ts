@@ -1,3 +1,3 @@
-export { default as SMap } from './map.svelte';
-export type { IMapProps } from './map.svelte';
+export * from './map';
 export * from './browser';
+export * from './layers';

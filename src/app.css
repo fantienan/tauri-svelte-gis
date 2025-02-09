@@ -37,6 +37,7 @@
     --scrollbar-height: 0.5rem;
     --scrollbar-track: hsl(var(--muted) / 1) !important;
     --scrollbar-thumb-radius: calc(var(--radius) - 4px);
+    --splitpanes-pane-bg: #fff;
   }
 
   .dark {
@@ -72,6 +73,7 @@
     --scrollbar-height: 0.5rem;
     --scrollbar-track: hsl(var(--muted) / 1) !important;
     --scrollbar-thumb-radius: calc(var(--radius) - 4px);
+    --splitpanes-pane-bg: var(--background);
   }
 }
 
@@ -127,6 +129,10 @@
   display: block;
   width: var(--scrollbar-width, 16px);
   height: var(--scrollbar-height, 16px);
+}
+
+.splitpanes__pane {
+  background-color: var(--splitpanes-pane-bg) !important;
 }
 
 @layer base {

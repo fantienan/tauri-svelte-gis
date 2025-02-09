@@ -3,14 +3,15 @@
   import * as Collapsible from '$lib/components/ui/collapsible/index.js';
   import * as Sidebar from '$lib/components/ui/sidebar/index.js';
   import { readDiskDirectory } from '@/services';
+  import FileArchive from 'lucide-svelte/icons/file-archive';
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
   import HardDrive from 'lucide-svelte/icons/hard-drive';
   import File from 'lucide-svelte/icons/file';
   import Folder from 'lucide-svelte/icons/folder';
   import FolderOpen from 'lucide-svelte/icons/folder-open';
-  import { onMount, type ComponentProps } from 'svelte';
-  import type { DriveRecord } from '@/types';
+  import { onMount } from 'svelte';
   import { traverseTree } from '@/utils';
+  import type { DriveRecord } from '@/types';
 
   let diskDirTree = $state<DriveRecord[]>([]);
 
@@ -36,7 +37,11 @@
 {#snippet Tree({ item }: { item: DriveRecord })}
   {#if item.type === 'file'}
     <Sidebar.MenuButton class="data-[active=true]:bg-transparent">
-      <File />
+      {#if item.path.endsWith('.zip') || item.path.endsWith('.rar')}
+        <FileArchive />
+      {:else}
+        <File />
+      {/if}
       <span class="truncate">{item.name}</span>
     </Sidebar.MenuButton>
   {:else}
@@ -74,6 +79,7 @@
               {:else}
                 <Folder />
               {/if}
+
               <span class="truncate">{item.name}</span>
             </Sidebar.MenuButton>
           {/snippet}

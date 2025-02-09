@@ -39,6 +39,7 @@
     "mitt": "^3.0.1",
     "nanoid": "^5.0.9",
     "sober": "^1.0.6",
+    "svelte-splitpanes": "^8.0.9",
     "tailwind-scrollbar": "^3.1.0",
     "uuid": "^11.0.5",
     "wellknown": "^0.5.0"
@@ -55,7 +56,7 @@
     "@types/mapbox-gl": "^3.4.1",
     "@types/wellknown": "^0.5.8",
     "autoprefixer": "^10.4.20",
-    "bits-ui": "1.0.0-next.86",
+    "bits-ui": "1.0.0-next.89",
     "clsx": "^2.1.1",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
