@@ -41,6 +41,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      font-gis:
+        specifier: ^1.0.6
+        version: 1.0.6
       geojson:
         specifier: ^0.5.0
         version: 0.5.0
@@ -127,8 +130,8 @@ importers:
         specifier: ^15.14.0
         version: 15.14.0
       lucide-svelte:
-        specifier: ^0.474.0
-        version: 0.474.0(svelte@5.19.1)
+        specifier: ^0.475.0
+        version: 0.475.0(svelte@5.19.1)
       mode-watcher:
         specifier: ^0.5.1
         version: 0.5.1(svelte@5.19.1)
@@ -1588,6 +1591,9 @@ packages:
   flatted@3.3.2:
     resolution: {integrity: sha512-AiwGJM8YcNOaobumgtng+6NHuOqC3A7MixFeDafM3X9cIUM+xUXoS5Vfgf+OihAYe20fxqNM9yPBXJzRtZ/4eA==}
 
+  font-gis@1.0.6:
+    resolution: {integrity: sha512-4qtmnBGkmTHbsbXW/C2vcR38Bo/yUFfyYXrK0nQbJgR252lmAK3Igho7AueBmPfPLlwbfNcNCwv13IDwKKI6/Q==}
+
   for-each@0.3.4:
     resolution: {integrity: sha512-kKaIINnFpzW6ffJNDjjyjrk21BkDx38c0xa/klsT8VzLCaMEefv4ZTacrcVR4DmgTeBra++jMDAfS/tS799YDw==}
     engines: {node: '>= 0.4'}
@@ -1949,8 +1955,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lucide-svelte@0.474.0:
-    resolution: {integrity: sha512-yOSqjXPoEDOXCceBIfDaed6RinOvhp03ShiTXH6O+vlXE/NsyjQpktL8gm2vGDxi9d81HMuPFN1dwhVURh6mGg==}
+  lucide-svelte@0.475.0:
+    resolution: {integrity: sha512-N5+hFTPHaZe9HhqJDxxxODfYuOmI6v+JIowzERcea/uxytN/JZlehVTcINBNp8wMo7l6ov1Jf5srrDbkI/WsJg==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
@@ -2599,6 +2605,9 @@ packages:
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
 
+  through2@3.0.2:
+    resolution: {integrity: sha512-enaDQ4MUyP2W6ZyT6EsMzqBPZaM/avg8iuo+l2d3QCs0J+6RaqkHV/2/lOwDTueBHeJ/2LG9lrLW3d5rWPucuQ==}
+
   tiny-lru@11.2.11:
     resolution: {integrity: sha512-27BIW0dIWTYYoWNnqSmoNMKe5WIbkXsc0xaCQHd3/3xT2XMuMJrzHdrO9QBFR14emBz1Bu0dOAs2sCBBrvgPQA==}
     engines: {node: '>=12'}
@@ -2702,6 +2711,10 @@ packages:
   uuid@11.0.5:
     resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
     hasBin: true
+
+  vinyl-paths@3.0.1:
+    resolution: {integrity: sha512-fpjimhur1emSbJSvy5dJjDklCFEh2LvQRSHPzMQlYFjPrdFMHAyzSe1fiLzykoqg9X2tqH8evhsOUDNT55a0sw==}
+    engines: {node: '>=8'}
 
   vite@6.0.11:
     resolution: {integrity: sha512-4VL9mQPKoHy4+FE0NnRE/kbY51TOfaknxAjt3fJbGJxhIpBZiqVzlZDEesWWsuREXHwNdAoOFZ9MkPEVXczHwg==}
@@ -5021,6 +5034,10 @@ snapshots:
 
   flatted@3.3.2: {}
 
+  font-gis@1.0.6:
+    dependencies:
+      vinyl-paths: 3.0.1
+
   for-each@0.3.4:
     dependencies:
       is-callable: 1.2.7
@@ -5373,7 +5390,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lucide-svelte@0.474.0(svelte@5.19.1):
+  lucide-svelte@0.475.0(svelte@5.19.1):
     dependencies:
       svelte: 5.19.1
 
@@ -6055,6 +6072,11 @@ snapshots:
     dependencies:
       any-promise: 1.3.0
 
+  through2@3.0.2:
+    dependencies:
+      inherits: 2.0.4
+      readable-stream: 2.3.8
+
   tiny-lru@11.2.11: {}
 
   tinyqueue@2.0.3: {}
@@ -6174,6 +6196,10 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@11.0.5: {}
+
+  vinyl-paths@3.0.1:
+    dependencies:
+      through2: 3.0.2
 
   vite@6.0.11(@types/node@22.10.7)(jiti@1.21.7)(yaml@2.7.0):
     dependencies:

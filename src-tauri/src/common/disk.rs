@@ -18,11 +18,9 @@ pub fn scan_drives(drives: &[String], entries: &mut Vec<serde_json::Value>) {
   let mut folder_entries = Vec::new();
   let mut file_entries = Vec::new();
   for drive in drives {
-    println!("Scanning drive: {}", drive);
     for entry in WalkDir::new(drive).max_depth(1).min_depth(1) {
       match entry {
         Ok(entry) => {
-          println!("{}", entry.path().display().to_string());
           let path = entry.path().display().to_string();
           let entry_type = if entry.path().is_dir() { "folder" } else { "file" };
           if let Some(file_name) = entry.path().file_name() {

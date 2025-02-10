@@ -46,3 +46,26 @@ export function traverseTree<T extends Record<string, any> = any>(params: ITrave
       traverseTree({ data: item[fieldNames.children], fieldNames, cb });
   });
 }
+
+const shapefileExtensions = [
+  'shp',
+  'shx',
+  'dbf',
+  'prj',
+  'sbn',
+  'sbx',
+  'fbn',
+  'fbx',
+  'ain',
+  'aih',
+  'ixs',
+  'mxs',
+  'atx',
+  'shp.xml',
+  'cpg'
+];
+export function isShapefile(filename: string): boolean {
+  const fileExtension = filename.split('.').pop()?.toLowerCase();
+
+  return shapefileExtensions.includes(fileExtension || '');
+}

@@ -2,7 +2,7 @@
   import { toast } from 'svelte-sonner';
   import * as Collapsible from '$lib/components/ui/collapsible/index.js';
   import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-  import { readDiskDirectory } from '@/services';
+  import { readDiskDirectory, uploadShapefile } from '@/services';
   import FileArchive from 'lucide-svelte/icons/file-archive';
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
   import HardDrive from 'lucide-svelte/icons/hard-drive';
@@ -10,19 +10,76 @@
   import Folder from 'lucide-svelte/icons/folder';
   import FolderOpen from 'lucide-svelte/icons/folder-open';
   import { onMount } from 'svelte';
-  import { traverseTree } from '@/utils';
+  import { isShapefile, traverseTree } from '@/utils';
   import type { DriveRecord } from '@/types';
 
   let diskDirTree = $state<DriveRecord[]>([]);
-
-  const onReadDiskDirectory = async (path?: string) => {
-    const res = await readDiskDirectory(path);
-    if (!res.success) {
-      toast.error(res.msg);
+  const getShapefileGroupName = (name: string) => name.split('.').shift()!;
+  const onReadDiskDirectory = async (item?: DriveRecord) => {
+    const res = await readDiskDirectory(item?.path);
+    if (!res?.success) {
+      toast.error(res?.msg ?? '查询磁盘目录失败');
       return [];
     }
-    // 根据type排序，drive、
-    return res.data.filter((item) => item.name);
+    const shapefiles = res.data.reduce(
+      (prev, curr) => {
+        if (isShapefile(curr.name)) {
+          const shapefileGroupName = getShapefileGroupName(curr.name);
+          prev[shapefileGroupName] ??= [];
+          prev[shapefileGroupName].push(curr);
+        }
+        return prev;
+      },
+      {} as Record<string, Required<DriveRecord>['shapefiles']>
+    );
+    const d = res.data.reduce((prev, curr) => {
+      if (!curr.name) return prev;
+      if (item && item.type === 'folder' && isShapefile(curr.name)) {
+        const shapefileGroupName = getShapefileGroupName(curr.name);
+        if (shapefiles[shapefileGroupName]) {
+          const shapefileGroup = res.data.filter(
+            (file) =>
+              isShapefile(file.name) && getShapefileGroupName(file.name) === shapefileGroupName
+          );
+          const mainFile = shapefileGroup.find(
+            (file) => file.name.endsWith('.shp') || file.name.endsWith('.dbf')
+          );
+          if (mainFile) {
+            mainFile.shapefiles = shapefileGroup.filter((file) => file !== mainFile);
+            prev.push(mainFile);
+          }
+          delete shapefiles[shapefileGroupName];
+        }
+      } else {
+        prev.push(curr);
+      }
+
+      return prev;
+    }, [] as DriveRecord[]);
+    console.log('-----', d);
+    return d;
+  };
+  const uploadShapefileWithPath = async (path: string) => {
+    const res = await uploadShapefile(path);
+    if (!res?.success) {
+      toast.error(res?.msg ?? '上传shapefile失败');
+      return;
+    }
+  };
+
+  const onReadDiskDirectoryWithRecord = async (item: DriveRecord) => {
+    const res = await onReadDiskDirectory(item);
+    const data = $state.snapshot(diskDirTree);
+    traverseTree({
+      data,
+      cb: (node) => {
+        if (node.item.path === item.path) {
+          node.item.children = res;
+          return true;
+        }
+      }
+    });
+    diskDirTree = data;
   };
 
   onMount(async () => {
@@ -30,10 +87,11 @@
   });
 </script>
 
-{#each diskDirTree as item (item.path)}
-  {@render Tree({ item })}
-{/each}
-
+<div class="disk-dir-tree">
+  {#each diskDirTree as item (item.path)}
+    {@render Tree({ item })}
+  {/each}
+</div>
 {#snippet Tree({ item }: { item: DriveRecord })}
   {#if item.type === 'file'}
     <Sidebar.MenuButton class="data-[active=true]:bg-transparent">
@@ -54,21 +112,11 @@
           {#snippet child({ props })}
             <Sidebar.MenuButton
               {...props}
-              onclick={async (e) => {
-                (props as any).onclick(e);
+              ondblclick={() => uploadShapefileWithPath(item.path)}
+              onclick={(e) => {
+                (props as any).onclick?.(e);
                 if (props['aria-expanded'] === 'false') return;
-                const res = await onReadDiskDirectory(item.path);
-                const data = $state.snapshot(diskDirTree);
-                traverseTree({
-                  data,
-                  cb: (node) => {
-                    if (node.item.path === item.path) {
-                      node.item.children = res;
-                      return true;
-                    }
-                  }
-                });
-                diskDirTree = data;
+                onReadDiskDirectoryWithRecord(item);
               }}
             >
               <ChevronRight className="transition-transform" />
