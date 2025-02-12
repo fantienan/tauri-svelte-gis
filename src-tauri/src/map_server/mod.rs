@@ -1,8 +1,9 @@
 pub mod shape_file;
+pub mod shapefile_server;
 
 #[tauri::command]
-pub fn upload_shape_file(file_path: &str) -> Result<(), String> {
-  shape_file::read_shape_file(file_path);
+pub fn upload_shapefile(file_path: &str) -> Result<(), String> {
+  shape_file::read_shapefile(file_path);
   Ok(())
 }
 

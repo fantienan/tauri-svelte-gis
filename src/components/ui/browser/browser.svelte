@@ -32,7 +32,7 @@
       },
       {} as Record<string, Required<DriveRecord>['shapefiles']>
     );
-    const d = res.data.reduce((prev, curr) => {
+    return res.data.reduce((prev, curr) => {
       if (!curr.name) return prev;
       if (item && item.type === 'folder' && isShapefile(curr.name)) {
         const shapefileGroupName = getShapefileGroupName(curr.name);
@@ -41,9 +41,11 @@
             (file) =>
               isShapefile(file.name) && getShapefileGroupName(file.name) === shapefileGroupName
           );
-          const mainFile = shapefileGroup.find(
-            (file) => file.name.endsWith('.shp') || file.name.endsWith('.dbf')
-          );
+          let mainFile = shapefileGroup.find((file) => file.name.endsWith('.shp'));
+
+          if (!mainFile) {
+            mainFile = shapefileGroup.find((file) => file.name.endsWith('.shp'));
+          }
           if (mainFile) {
             mainFile.shapefiles = shapefileGroup.filter((file) => file !== mainFile);
             prev.push(mainFile);
@@ -56,14 +58,19 @@
 
       return prev;
     }, [] as DriveRecord[]);
-    console.log('-----', d);
-    return d;
   };
-  const uploadShapefileWithPath = async (path: string) => {
+
+  const addLayerWithShapefile = async (path: string) => {
     const res = await uploadShapefile(path);
     if (!res?.success) {
       toast.error(res?.msg ?? '上传shapefile失败');
       return;
+    }
+  };
+
+  const onAddLayer = (path: string) => {
+    if (isShapefile(path)) {
+      addLayerWithShapefile(path);
     }
   };
 
@@ -94,7 +101,10 @@
 </div>
 {#snippet Tree({ item }: { item: DriveRecord })}
   {#if item.type === 'file'}
-    <Sidebar.MenuButton class="data-[active=true]:bg-transparent">
+    <Sidebar.MenuButton
+      class="data-[active=true]:bg-transparent"
+      ondblclick={() => onAddLayer(item.path)}
+    >
       {#if item.path.endsWith('.zip') || item.path.endsWith('.rar')}
         <FileArchive />
       {:else}
@@ -112,7 +122,6 @@
           {#snippet child({ props })}
             <Sidebar.MenuButton
               {...props}
-              ondblclick={() => uploadShapefileWithPath(item.path)}
               onclick={(e) => {
                 (props as any).onclick?.(e);
                 if (props['aria-expanded'] === 'false') return;

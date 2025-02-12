@@ -54,9 +54,9 @@ fn init_window_config(app_handle: &tauri::AppHandle) -> Result<(), Box<dyn std::
 }
 
 // #[tauri::command]
-// fn upload_shape_file(filename: &str) {
+// fn upload_shapefile(filename: &str) {
 //   // 示例：上传shape file
-//   if let Err(e) = map_server::upload_shape_file(filename) {
+//   if let Err(e) = map_server::upload_shapefile(filename) {
 //     eprintln!("Error uploading shape file: {}", e);
 //   }
 
@@ -81,7 +81,7 @@ pub fn run() {
     .plugin(tauri_plugin_opener::init())
     .invoke_handler(tauri::generate_handler![
       common::disk::read_disk_directory,
-      map_server::upload_shape_file
+      map_server::upload_shapefile
     ])
     .setup(|app| {
       init_window_config(&app.handle())?;
