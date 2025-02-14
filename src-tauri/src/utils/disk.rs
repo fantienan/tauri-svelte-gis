@@ -1,4 +1,4 @@
-use crate::common::response::create_response;
+use crate::utils::response::create_response;
 use serde_json;
 use std::io;
 use walkdir::WalkDir;
@@ -58,7 +58,6 @@ pub fn scan_drives(drives: &[String], entries: &mut Vec<serde_json::Value>) {
   entries.extend(file_entries);
 }
 
-#[tauri::command]
 pub fn read_disk_directory(path: Option<&str>) -> Result<serde_json::Value, String> {
   let mut success = true;
   let mut msg = String::from("Operation successful");
