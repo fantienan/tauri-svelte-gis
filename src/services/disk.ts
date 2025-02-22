@@ -1,6 +1,6 @@
 import { invoke } from '@tauri-apps/api/core';
 import type { ApiResult, DriveRecord } from '@/types';
 
-export const readDiskDirectory = (path?: string) => {
-  return invoke<ApiResult<DriveRecord[]>>('read_disk_directory', { path });
+export const diskReadDir = (path?: string) => {
+  return invoke<ApiResult<DriveRecord[]>>('disk_read_dir', { path });
 };

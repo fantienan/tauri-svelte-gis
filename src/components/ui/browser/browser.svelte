@@ -2,9 +2,9 @@
   import { toast } from 'svelte-sonner';
   import * as Collapsible from '$lib/components/ui/collapsible/index.js';
   import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-  import { readDiskDirectory, uploadShapefile } from '@/services';
+  import { diskReadDir, shapefileRead, shapefileUpload } from '@/services';
   import FileArchive from 'lucide-svelte/icons/file-archive';
-  import ChevronRight from 'lucide-svelte/icons/chevron-right';
+  // import ChevronRight from 'lucide-svelte/icons/chevron-right';
   import HardDrive from 'lucide-svelte/icons/hard-drive';
   import File from 'lucide-svelte/icons/file';
   import Folder from 'lucide-svelte/icons/folder';
@@ -16,7 +16,7 @@
   let diskDirTree = $state<DriveRecord[]>([]);
   const getShapefileGroupName = (name: string) => name.split('.').shift()!;
   const onReadDiskDirectory = async (item?: DriveRecord) => {
-    const res = await readDiskDirectory(item?.path);
+    const res = await diskReadDir(item?.path);
     if (!res?.success) {
       toast.error(res?.msg ?? '查询磁盘目录失败');
       return [];
@@ -41,9 +41,8 @@
             (file) =>
               isShapefile(file.name) && getShapefileGroupName(file.name) === shapefileGroupName
           );
-          const mainFile = shapefileGroup.find(
-            (file) => file.name.endsWith('.shp') || file.name.endsWith('.dbf')
-          );
+
+          const mainFile = shapefileGroup.find((file) => file.name.endsWith('.shp'));
           if (mainFile) {
             mainFile.shapefiles = shapefileGroup.filter((file) => file !== mainFile);
             prev.push(mainFile);
@@ -56,11 +55,10 @@
 
       return prev;
     }, [] as DriveRecord[]);
-    console.log('-----', d);
     return d;
   };
-  const uploadShapefileWithPath = async (path: string) => {
-    const res = await uploadShapefile(path);
+  const uploadShapefile = async (path: string) => {
+    const res = await shapefileUpload(path);
     if (!res?.success) {
       toast.error(res?.msg ?? '上传shapefile失败');
       return;
@@ -94,7 +92,10 @@
 </div>
 {#snippet Tree({ item }: { item: DriveRecord })}
   {#if item.type === 'file'}
-    <Sidebar.MenuButton class="data-[active=true]:bg-transparent">
+    <Sidebar.MenuButton
+      class="data-[active=true]:bg-transparent"
+      ondblclick={() => uploadShapefile(item.path)}
+    >
       {#if item.path.endsWith('.zip') || item.path.endsWith('.rar')}
         <FileArchive />
       {:else}
@@ -105,21 +106,21 @@
   {:else}
     <Sidebar.MenuItem>
       <Collapsible.Root
-        class="group/collapsible [&[data-state=open]>button>svg:first-child]:rotate-90"
+        class="group/collapsible [&[data-state1=open]>button>svg:first-child]:rotate-90"
         open={false}
       >
         <Collapsible.Trigger>
           {#snippet child({ props })}
             <Sidebar.MenuButton
               {...props}
-              ondblclick={() => uploadShapefileWithPath(item.path)}
+              ondblclick={() => uploadShapefile(item.path)}
               onclick={(e) => {
                 (props as any).onclick?.(e);
                 if (props['aria-expanded'] === 'false') return;
                 onReadDiskDirectoryWithRecord(item);
               }}
             >
-              <ChevronRight className="transition-transform" />
+              <!-- <ChevronRight className="transition-transform" /> -->
               {#if item.type === 'drive'}
                 <HardDrive />
               {:else if props['aria-expanded'] === 'true'}

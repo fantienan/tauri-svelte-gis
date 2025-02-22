@@ -1,11 +1,9 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-
 use tauri::Manager;
 use tauri_plugin_log::{Target, TargetKind};
+use utils::response::create_response;
 mod shapefile_server;
 mod utils;
-
-const RESOURCES_DB_DIR: &str = "resources/db";
 
 // 获取当前路径
 fn get_current_path() -> std::path::PathBuf {
@@ -15,7 +13,11 @@ fn get_current_path() -> std::path::PathBuf {
 
 // 初始化日志
 fn tauri_plugin_log_init() -> impl tauri::plugin::Plugin<tauri::Wry> {
-  let log_file_path = get_current_path().join("resources/app").to_string_lossy().to_string();
+  let log_file_path = get_current_path()
+    .join("resources")
+    .join("app")
+    .to_string_lossy()
+    .to_string();
   tauri_plugin_log::Builder::new()
     .targets([
       Target::new(TargetKind::Stdout),
@@ -55,17 +57,49 @@ fn init_window_config(app_handle: &tauri::AppHandle) -> Result<(), Box<dyn std::
 }
 
 #[tauri::command]
-fn read_disk_directory(path: Option<&str>) -> Result<serde_json::Value, String> {
-  utils::disk::read_disk_directory(path)
+fn disk_read_dir(path: Option<&str>) -> Result<serde_json::Value, String> {
+  utils::disk::disk_read_dir(path)
 }
 
 #[tauri::command]
-fn upload_shape_file(path: &str) -> Result<(), String> {
-  let current_dir = get_current_path();
-  let mbtiles_path = current_dir.join(RESOURCES_DB_DIR).join("test.mbtiles"); 
-  shapefile_server::Server::new(path, mbtiles_path).map_err(|e| e.to_string())?;
-  Ok(())
+async fn shapefile_to_geojson(shapefile_path: &str) -> Result<serde_json::Value, String> {
+  shapefile_server::utilities::shapefile_to_geojson(shapefile_path).await
 }
+
+#[tauri::command]
+fn shapefile_to_server(shapefile_path: &str) -> Result<serde_json::Value, String> {
+  let path = std::path::Path::new(shapefile_path);
+  if !path.exists() {
+    return Err("文件不存在".to_string());
+  }
+  let file_name = path
+    .file_stem()
+    .and_then(|name| name.to_str())
+    .ok_or_else(|| "无法获取文件名".to_string())?;
+  let current_dir = get_current_path();
+  let mbtiles_path = current_dir
+    .join("resources")
+    .join("mbtiles")
+    .join(format!("{}.mbtiles", file_name));
+
+  let server = shapefile_server::Server::new(shapefile_server::ServerConfig {
+    shapefile_file_path: shapefile_path,
+    mbtiles_file_path: mbtiles_path,
+  })
+  .map_err(|e| e.to_string())?
+  .start_server();
+
+  match server {
+    Ok(_) => Ok(create_response::<()>(true, None, "成功".to_string())),
+    Err(e) => Err(e.to_string()),
+  }
+}
+
+#[tauri::command]
+async fn shapefile_to_record(shapefile_path: &str) -> Result<serde_json::Value, String> {
+  shapefile_server::utilities::shapefile_to_record(shapefile_path).await.map_err(|e| e.to_string())
+}
+
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -75,7 +109,12 @@ pub fn run() {
     .plugin(tauri_plugin_log_init())
     .plugin(tauri_plugin_shell::init())
     .plugin(tauri_plugin_opener::init())
-    .invoke_handler(tauri::generate_handler![read_disk_directory, upload_shape_file])
+    .invoke_handler(tauri::generate_handler![
+      disk_read_dir,
+      shapefile_to_record,
+      shapefile_to_server,
+      shapefile_to_geojson
+    ])
     .setup(|app| {
       init_window_config(&app.handle())?;
       Ok(())

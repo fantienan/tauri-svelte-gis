@@ -1,6 +1,7 @@
-use serde_json;
-
-pub fn create_response(success: bool, data: Vec<serde_json::Value>, msg: String) -> serde_json::Value {
+pub fn create_response<T>(success: bool, data: Option<T>, msg: String) -> serde_json::Value
+where
+  T: serde::Serialize,
+{
   serde_json::json!({
       "success": success,
       "data": data,

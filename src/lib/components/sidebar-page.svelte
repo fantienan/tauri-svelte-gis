@@ -25,7 +25,7 @@
 {/snippet}
 
 {#snippet sidebarInset()}
-  <Sidebar.Inset class="w-full overflow-hidden">
+  <Sidebar.Inset>
     {#if isMobile.current}
       <header class={headerCls}>
         <Sidebar.Trigger class="-ml-1" />
@@ -60,9 +60,7 @@
       class="w-full"
       pushOtherPanes={false}
     >
-      <Pane style="background-color: var();" size={25} snapSize={1} class="relative"
-        >{@render appSidebar()}</Pane
-      >
+      <Pane size={25} snapSize={1} class="relative">{@render appSidebar()}</Pane>
       <Pane size={75}>{@render sidebarInset()}</Pane>
     </Splitpanes>
   {/if}

@@ -1,2 +1,2 @@
 export * from './disk';
-export * from './shapfile';
+export * from './shapefile';

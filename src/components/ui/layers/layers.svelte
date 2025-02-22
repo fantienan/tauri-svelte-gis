@@ -2,7 +2,7 @@
   import { toast } from 'svelte-sonner';
   import * as Collapsible from '$lib/components/ui/collapsible/index.js';
   import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-  import { readDiskDirectory } from '@/services';
+  import { diskReadDir } from '@/services';
   import FileArchive from 'lucide-svelte/icons/file-archive';
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
   import HardDrive from 'lucide-svelte/icons/hard-drive';

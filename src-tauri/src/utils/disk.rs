@@ -22,7 +22,11 @@ pub fn scan_drives(drives: &[String], entries: &mut Vec<serde_json::Value>) {
       match entry {
         Ok(entry) => {
           let path = entry.path().display().to_string();
-          let entry_type = if entry.path().is_dir() { "folder" } else { "file" };
+          let entry_type = if entry.path().is_dir() {
+            "folder"
+          } else {
+            "file"
+          };
           if let Some(file_name) = entry.path().file_name() {
             let json_entry = serde_json::json!({
               "path": path,
@@ -58,7 +62,7 @@ pub fn scan_drives(drives: &[String], entries: &mut Vec<serde_json::Value>) {
   entries.extend(file_entries);
 }
 
-pub fn read_disk_directory(path: Option<&str>) -> Result<serde_json::Value, String> {
+pub fn disk_read_dir(path: Option<&str>) -> Result<serde_json::Value, String> {
   let mut success = true;
   let mut msg = String::from("Operation successful");
   let mut entries = Vec::new();
@@ -81,5 +85,5 @@ pub fn read_disk_directory(path: Option<&str>) -> Result<serde_json::Value, Stri
     }
   }
 
-  Ok(create_response(success, entries, msg))
+  Ok(create_response(success, Some(entries), msg))
 }

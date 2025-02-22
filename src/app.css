@@ -133,6 +133,7 @@
 
 .splitpanes__pane {
   background-color: var(--splitpanes-pane-bg) !important;
+  height: 100svh;
 }
 
 @layer base {

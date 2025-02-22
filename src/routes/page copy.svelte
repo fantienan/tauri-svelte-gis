@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { readDiskDirectory } from '@/services';
+  import { diskReadDir } from '@/services';
   import folderSvg from '@/assets/svgs/folder.svg';
   import fileSvg from '@/assets/svgs/file.svg';
   import type { DriveRecord } from '@/types';
