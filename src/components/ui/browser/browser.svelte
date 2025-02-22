@@ -2,7 +2,7 @@
   import { toast } from 'svelte-sonner';
   import * as Collapsible from '$lib/components/ui/collapsible/index.js';
   import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-  import { diskReadDir, shapefileRead, shapefileUpload } from '@/services';
+  import { diskReadDir, shapefileToServer } from '@/services';
   import FileArchive from 'lucide-svelte/icons/file-archive';
   // import ChevronRight from 'lucide-svelte/icons/chevron-right';
   import HardDrive from 'lucide-svelte/icons/hard-drive';
@@ -58,7 +58,7 @@
     return d;
   };
   const uploadShapefile = async (path: string) => {
-    const res = await shapefileUpload(path);
+    const res = await shapefileToServer(path);
     if (!res?.success) {
       toast.error(res?.msg ?? '上传shapefile失败');
       return;

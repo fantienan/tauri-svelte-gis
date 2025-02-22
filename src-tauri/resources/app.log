@@ -157,3 +157,4 @@
 [2025-02-22][01:32:29][tauri_app_lib][INFO] Init Window config injected successfully
 [2025-02-22][01:33:46][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
 [2025-02-22][01:33:46][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-02-22][07:57:47][tauri_app_lib][INFO] Init Window config injected successfully

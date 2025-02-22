@@ -97,9 +97,10 @@ fn shapefile_to_server(shapefile_path: &str) -> Result<serde_json::Value, String
 
 #[tauri::command]
 async fn shapefile_to_record(shapefile_path: &str) -> Result<serde_json::Value, String> {
-  shapefile_server::utilities::shapefile_to_record(shapefile_path).await.map_err(|e| e.to_string())
+  shapefile_server::utilities::shapefile_to_record(shapefile_path)
+    .await
+    .map_err(|e| e.to_string())
 }
-
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {

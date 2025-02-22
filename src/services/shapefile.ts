@@ -1,12 +1,12 @@
 import { invoke } from '@tauri-apps/api/core';
 import type { ApiResult } from '@/types';
 
-export const shapefileUpload = (shapefilePath: string) => {
-  return invoke<ApiResult>('shapefile_upload', { shapefilePath });
+export const shapefileToServer = (shapefilePath: string) => {
+  return invoke<ApiResult>('shapefile_to_server', { shapefilePath });
 };
 
-export const shapefileRead = (shapefilePath: string) => {
-  return invoke<ApiResult>('shapefile_read', { shapefilePath });
+export const shapefileToGeojson = (shapefilePath: string) => {
+  return invoke<ApiResult>('shapefile_to_geojson', { shapefilePath });
 };
 
 export const shapefileToRecord = (shapefilePath: string) => {
