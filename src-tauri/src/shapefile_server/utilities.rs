@@ -1,3 +1,4 @@
+use super::shapefile_to_geojson::convert_shapefile_to_geojson;
 use crate::utils::response::create_response;
 use futures::{stream, StreamExt};
 use geo_types::{LineString, Point, Polygon};
@@ -8,20 +9,18 @@ use tokio::sync::Mutex;
 use wkt::Wkt;
 
 pub async fn shapefile_to_geojson(shapefile_path: &str) -> Result<serde_json::Value, String> {
-  let path = std::path::Path::new(shapefile_path);
-  let parent_dir = path.parent().ok_or("无法获取父目录")?;
-  let file_name = path
-    .file_stem()
-    .and_then(|name| name.to_str())
-    .ok_or("无法获取文件名")?;
-  let output_path = parent_dir.join(format!("{}.geojson", file_name));
-
-  shapefile_to_geojson::convert_shapefile_to_geojson(shapefile_path, output_path.to_str().unwrap())
+  let feature_collection = convert_shapefile_to_geojson(shapefile_path)
     .await
-    .map_err(|e| format!("转换失败: {}", e))?;
-  // 读取output_path 文件内容
-  let content = std::fs::read_to_string(output_path).map_err(|e| format!("读取文件失败: {}", e))?;
-  Ok(create_response(true, Some(content), "成功".to_string()))
+    .map_err(|e| format!("转换失败: {}", e));
+
+  let geojson_output = serde_json::to_string_pretty(&feature_collection);
+
+  match geojson_output {
+    Ok(geojson) => {
+      Ok(create_response(true, Some(geojson), "成功".to_string()))
+    }
+    Err(e) => return Err(format!("序列化失败: {}", e)),
+  }
 }
 
 pub async fn shapefile_to_record(
@@ -29,7 +28,6 @@ pub async fn shapefile_to_record(
 ) -> Result<serde_json::Value, Box<dyn std::error::Error + Send + Sync>> {
   let base_path = Path::new(shapefile_path);
   let shp_path = base_path.with_extension("shp");
-  let dbf_path = base_path.with_extension("dbf");
   let mut shp_reader = shapefile::Reader::from_path(shp_path.clone())?;
   let shape_records: Vec<_> = shp_reader.iter_shapes_and_records().collect();
   let properties = Arc::new(Mutex::new(Vec::new()));
@@ -99,7 +97,7 @@ async fn process_shape_record(
 }
 
 fn process_polygon_wkt(shape: &Shape) -> Result<Wkt<f64>, String> {
-    let wkt_value = match shape {
+  let wkt_value = match shape {
     Shape::Polygon(polygon) => {
       // 分离外环和内环
       let mut exterior = None;
@@ -130,15 +128,12 @@ fn process_polygon_wkt(shape: &Shape) -> Result<Wkt<f64>, String> {
       // 验证外环是否存在
       match exterior {
         Some(ext) => wkt::ToWkt::to_wkt(&Polygon::new(ext, interiors)),
-        None => {
-          return Err("Warning: Invalid polygon detected - missing outer ring".to_string())
-        }
+        None => return Err("Warning: Invalid polygon detected - missing outer ring".to_string()),
       }
     }
-    _=> return Err("Expected Polygon shape".to_string())
+    _ => return Err("Expected Polygon shape".to_string()),
   };
   Ok(wkt_value)
-
 }
 
 fn process_line_wkt(shape: &Shape) -> Result<Wkt<f64>, String> {

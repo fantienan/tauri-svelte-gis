@@ -1,4 +1,6 @@
 use super::error::{SfsError, SfsResult};
+use super::shapefile_to_geojson::convert_shapefile_to_geojson;
+use futures::TryFutureExt;
 use std::path::Path;
 
 #[derive(Clone, Debug)]
@@ -38,16 +40,12 @@ impl Server {
     })
   }
 
-  pub fn start_server(&self) -> SfsResult<Self> {
-    println!("mbtiles: {:?}", self.mbtiles_file_path);
-    // let shapefile = shapefile::read(&self.shapefile_file_path)
-    //   .map_err(|e| SfsError::ShapefileReadError(e.to_string()))?;
+  pub async fn create(&self) -> SfsResult<Self> {
+    let feature_collection = convert_shapefile_to_geojson(&self.shapefile_file_path)
+      .map_err(|e| SfsError::CreateServer(e.to_string()))
+      .await?;
 
-    let mut mbtiles = mbtiles::Mbtiles::new(&self.mbtiles_file_path).map_err(|e| {
-      println!("mbtiles: {:?}", e.to_string());
-      SfsError::MbtilesError(e.to_string())
-    })?;
-    println!("-----mbtiles: {:?}", mbtiles);
     Ok(self.clone())
   }
 }
+

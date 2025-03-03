@@ -8,11 +8,8 @@ pub enum SfsError {
   #[error("shapefile_file_path contains unsupported characters: {0}")]
   UnsupportedCharsInFilepathWithShapefile(PathBuf),
 
-  #[error("Failed to read shapefile: {0}")]
-  ShapefileReadError(String),
-
-  #[error("MBTiles error: {0}")]
-  MbtilesError(String),
+  #[error("Create server error: {0}")]
+  CreateServer(String),
 }
 
 pub type SfsResult<T> = Result<T, SfsError>;

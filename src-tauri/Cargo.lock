@@ -1543,26 +1543,6 @@ checksum = "5c297a1c74b71ae29df00c3e22dd9534821d60eb9af5a0192823fa2acea70c2a"
 
 [[package]]
 name = "dbase"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e3c1a2a9e9238982f599f25b54ec2c7cf1518cc97084cf0c8da475f8a3727fe7"
-dependencies = [
- "byteorder",
- "time",
-]
-
-[[package]]
-name = "dbase"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "86bc97a72d9aca92b9a8095b3bfe8f691c54bb15eefaacec53882604062428bf"
-dependencies = [
- "byteorder",
- "time",
-]
-
-[[package]]
-name = "dbase"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "847c0b5d4f3a3d80f9c64db3cb60eb00304b3ea1262c7299dd6274a83e714d24"
@@ -3308,15 +3288,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "itertools"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b192c782037fadd9cfa75548310488aabdbf3d2da73885b31bd0abd03351285"
-dependencies = [
- "either",
-]
-
-[[package]]
 name = "itoa"
 version = "0.4.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3770,8 +3741,8 @@ dependencies = [
  "json-patch 2.0.0",
  "lambda-web",
  "log",
- "martin-tile-utils 0.5.1",
- "mbtiles 0.11.1",
+ "martin-tile-utils",
+ "mbtiles",
  "moka",
  "num_cpus",
  "pbf_font_tools",
@@ -3808,16 +3779,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "martin-tile-utils"
-version = "0.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e34b38db487b69578dd2f20aec765eabd1261442a4665ea28a780d9d88325876"
-dependencies = [
- "brotli 7.0.0",
- "flate2",
-]
-
-[[package]]
 name = "matchers"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3846,7 +3807,7 @@ dependencies = [
  "futures",
  "itertools 0.13.0",
  "log",
- "martin-tile-utils 0.5.1",
+ "martin-tile-utils",
  "md5",
  "num_cpus",
  "serde",
@@ -3858,37 +3819,6 @@ dependencies = [
  "sqlite-hashes",
  "sqlx",
  "thiserror 1.0.69",
- "tilejson",
- "tokio",
- "xxhash-rust",
-]
-
-[[package]]
-name = "mbtiles"
-version = "0.12.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "376fe98674bb2a2cb2b5d38f112643ce9a5993653ec804fdde7955b8c835e005"
-dependencies = [
- "anyhow",
- "clap",
- "enum-display",
- "env_logger",
- "flume",
- "futures",
- "itertools 0.14.0",
- "log",
- "martin-tile-utils 0.6.0",
- "md5",
- "num_cpus",
- "serde",
- "serde_json",
- "serde_with",
- "serde_yaml",
- "size_format",
- "sqlite-compressions",
- "sqlite-hashes",
- "sqlx",
- "thiserror 2.0.11",
  "tilejson",
  "tokio",
  "xxhash-rust",
@@ -4026,19 +3956,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e1a5d38b9b352dbd913288736af36af41c48d61b1a8cd34bcecd727561b7d511"
 dependencies = [
  "serde",
-]
-
-[[package]]
-name = "mvt"
-version = "0.9.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f49c55953e35b5ce445dc5b72d964e9e185df82cb7b71629251e1fa355b50e22"
-dependencies = [
- "log",
- "num-traits",
- "pointy",
- "protobuf",
- "thiserror 2.0.11",
 ]
 
 [[package]]
@@ -4965,15 +4882,6 @@ dependencies = [
  "fdeflate",
  "flate2",
  "miniz_oxide",
-]
-
-[[package]]
-name = "pointy"
-version = "0.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0da621c0f2ec6aca88545b90ed862dee7ee364e9a8c17b234b9469e3f340ff70"
-dependencies = [
- "num-traits",
 ]
 
 [[package]]
@@ -6282,39 +6190,12 @@ dependencies = [
 
 [[package]]
 name = "shapefile"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "96e5f3746704e7b520956ef4906aa15e24e80b351c41bdfbf11bb086b12c48af"
-dependencies = [
- "byteorder",
- "dbase 0.4.0",
-]
-
-[[package]]
-name = "shapefile"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "79d5472e932503059d02779ad2c1b96258980940c6923e49f427fbe80eb3053c"
 dependencies = [
  "byteorder",
- "dbase 0.5.0",
-]
-
-[[package]]
-name = "shapefile-to-geojson"
-version = "0.1.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1c255c8dad985e26882dba6ba7b631abdbf43f1930640d0adb2b25f7d89158df"
-dependencies = [
- "dbase 0.3.0",
- "futures",
- "geojson",
- "indicatif",
- "num_cpus",
- "regex",
- "serde_json",
- "shapefile 0.5.0",
- "tokio",
+ "dbase",
 ]
 
 [[package]]
@@ -7054,17 +6935,16 @@ dependencies = [
  "futures",
  "gdal",
  "geo-types",
+ "geojson",
+ "indicatif",
  "log",
  "martin",
- "mbtiles 0.12.0",
- "mvt",
  "num_cpus",
  "once_cell",
  "regex",
  "serde",
  "serde_json",
- "shapefile 0.6.0",
- "shapefile-to-geojson",
+ "shapefile",
  "tauri",
  "tauri-build",
  "tauri-plugin-dialog",

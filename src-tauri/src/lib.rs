@@ -67,7 +67,7 @@ async fn shapefile_to_geojson(shapefile_path: &str) -> Result<serde_json::Value,
 }
 
 #[tauri::command]
-fn shapefile_to_server(shapefile_path: &str) -> Result<serde_json::Value, String> {
+async fn shapefile_to_server(shapefile_path: &str) -> Result<serde_json::Value, String> {
   let path = std::path::Path::new(shapefile_path);
   if !path.exists() {
     return Err("文件不存在".to_string());
@@ -87,7 +87,7 @@ fn shapefile_to_server(shapefile_path: &str) -> Result<serde_json::Value, String
     mbtiles_file_path: mbtiles_path,
   })
   .map_err(|e| e.to_string())?
-  .start_server();
+  .create().await;
 
   match server {
     Ok(_) => Ok(create_response::<()>(true, None, "成功".to_string())),
