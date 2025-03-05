@@ -2,6 +2,7 @@
 use tauri::Manager;
 use tauri_plugin_log::{Target, TargetKind};
 use utils::response::create_response;
+mod map_server;
 mod shapefile_server;
 mod utils;
 
@@ -9,6 +10,11 @@ mod utils;
 fn get_current_path() -> std::path::PathBuf {
   let current_dir = std::env::current_dir().unwrap();
   current_dir
+}
+
+fn get_workspace_path() -> std::path::PathBuf {
+  let current_dir = get_current_path();
+  current_dir.join("workspace")
 }
 
 // 初始化日志
@@ -67,39 +73,35 @@ async fn shapefile_to_geojson(shapefile_path: &str) -> Result<serde_json::Value,
 }
 
 #[tauri::command]
-async fn shapefile_to_server(shapefile_path: &str) -> Result<serde_json::Value, String> {
-  let path = std::path::Path::new(shapefile_path);
-  if !path.exists() {
+async fn shapefile_to_record(shapefile_path: &str) -> Result<serde_json::Value, String> {
+  shapefile_server::utilities::shapefile_to_record(shapefile_path)
+    .await
+    .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+async fn create_server(input_path: &str) -> Result<serde_json::Value, String> {
+  let input_path = std::path::Path::new(input_path);
+  if !input_path.exists() {
     return Err("文件不存在".to_string());
   }
-  let file_name = path
+  let file_name = input_path
     .file_stem()
     .and_then(|name| name.to_str())
     .ok_or_else(|| "无法获取文件名".to_string())?;
-  let current_dir = get_current_path();
-  let mbtiles_path = current_dir
-    .join("resources")
+
+  let workspace_path = get_workspace_path();
+
+  let output_path = workspace_path
     .join("mbtiles")
     .join(format!("{}.mbtiles", file_name));
 
-  let server = shapefile_server::Server::new(shapefile_server::ServerConfig {
-    shapefile_file_path: shapefile_path,
-    mbtiles_file_path: mbtiles_path,
-  })
-  .map_err(|e| e.to_string())?
-  .create().await;
+  let server = map_server::command::create_server(input_path, output_path).await;
 
   match server {
     Ok(_) => Ok(create_response::<()>(true, None, "成功".to_string())),
     Err(e) => Err(e.to_string()),
   }
-}
-
-#[tauri::command]
-async fn shapefile_to_record(shapefile_path: &str) -> Result<serde_json::Value, String> {
-  shapefile_server::utilities::shapefile_to_record(shapefile_path)
-    .await
-    .map_err(|e| e.to_string())
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -113,7 +115,7 @@ pub fn run() {
     .invoke_handler(tauri::generate_handler![
       disk_read_dir,
       shapefile_to_record,
-      shapefile_to_server,
+      create_server,
       shapefile_to_geojson
     ])
     .setup(|app| {

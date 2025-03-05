@@ -108,41 +108,18 @@
         "https://tiles2.geovisearth.com/base/v1/vec/{z}/{x}/{y}?tmsIds=w&token=62d17dd1bcd9b6b4cde180133d80aa420446c9d132f88cb84c29d51e77d01c4c",
         "https://tiles3.geovisearth.com/base/v1/vec/{z}/{x}/{y}?tmsIds=w&token=62d17dd1bcd9b6b4cde180133d80aa420446c9d132f88cb84c29d51e77d01c4c"
       ]
-    },
-
-    "AAA": {
-      "type": "vector",
-      "tileSize": 512,
-      "maxzoom": 18,
-      "tiles": ["http://127.0.0.1:8080/tiles/{z}/{x}/{y}.pbf"]
     }
   },
   "layers": [
     {
       "id": "TIANDITU_IMAGE",
       "type": "raster",
-      "source": "TIANDITU_IMAGE",
-      "layout": {
-        "visibility": "none"
-      }
+      "source": "TIANDITU_IMAGE"
     },
     {
       "id": "TIANDITU_IMAGE_LABEL",
       "type": "raster",
-      "source": "TIANDITU_IMAGE_LABEL",
-      "layout": {
-        "visibility": "none"
-      }
-    },
-    {
-      "id": "fill",
-      "type": "fill",
-      "source": "AAA",
-      "source-layer": "造林任务图斑-天津",
-      "paint": {
-        "fill-color": "red",
-        "fill-opacity": 0.5
-      }
+      "source": "TIANDITU_IMAGE_LABEL"
     },
     {
       "id": "TIANDITU_MAP",

@@ -34,31 +34,7 @@
       style: '/style/style.json',
       dispatch
     });
-    smap.once('style.load', () => {
-      onReady?.(smap);
-      smap.addSource('geojson', {
-        type: 'geojson',
-        data: '/data/geojson.geojson'
-      });
-      // smap.addLayer({
-      //   id: 'geojson-fill',
-      //   type: 'fill',
-      //   source: 'geojson',
-      //   paint: {
-      //     'fill-color': 'red',
-      //     'fill-opacity': 0.5
-      //   }
-      // });
-      smap.addLayer({
-        id: 'geojson-line',
-        type: 'line',
-        source: 'geojson',
-        paint: {
-          'line-color': 'blue',
-          'line-width': 2
-        }
-      });
-    });
+    smap.once('style.load', () => onReady?.(smap));
   });
 </script>
 

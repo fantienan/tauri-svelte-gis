@@ -16,9 +16,7 @@ pub async fn shapefile_to_geojson(shapefile_path: &str) -> Result<serde_json::Va
   let geojson_output = serde_json::to_string_pretty(&feature_collection);
 
   match geojson_output {
-    Ok(geojson) => {
-      Ok(create_response(true, Some(geojson), "成功".to_string()))
-    }
+    Ok(geojson) => Ok(create_response(true, Some(geojson), "成功".to_string())),
     Err(e) => return Err(format!("序列化失败: {}", e)),
   }
 }

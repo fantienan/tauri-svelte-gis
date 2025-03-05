@@ -71,7 +71,9 @@ const shapefileExtensions = [
   'mxs',
   'atx',
   'shp.xml',
-  'cpg'
+  'cpg',
+  'fix',
+  'qix'
 ];
 export function isShapefile(filename: string): boolean {
   const fileExtension = filename.split('.').pop()?.toLowerCase();

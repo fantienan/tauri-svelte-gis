@@ -33,9 +33,6 @@
     ],
     "resources": {
       "resources/*": "resources/"
-    },
-    "externalBin": [
-      "binaries/ogr2ogr"
-    ]
+    }
   }
 }

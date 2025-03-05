@@ -158,3 +158,36 @@
 [2025-02-22][01:33:46][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
 [2025-02-22][01:33:46][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
 [2025-02-22][07:57:47][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-03][23:35:36][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-03][23:35:36][tao::platform_impl::platform::keyboard][TRACE] Received a CHAR message but no `event_info` was available. The message is probably IME, returning.
+[2025-03-03][23:37:13][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-03][23:39:02][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-03][23:39:02][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-03][23:39:14][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-03][23:39:14][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-03][23:39:26][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-03][23:39:26][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-03][23:50:32][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-03][23:53:09][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-03][23:55:05][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-03][23:56:00][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-03][23:56:00][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-03][23:58:11][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-04][00:01:00][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-04][00:02:41][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-04][00:02:41][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-04][00:02:50][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-04][00:02:50][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-04][00:05:52][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-04][00:07:07][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-04][00:07:07][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-04][00:10:10][tao::platform_impl::platform::keyboard][TRACE] Received a CHAR message but no `event_info` was available. The message is probably IME, returning.
+[2025-03-04][00:10:10][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][00:00:03][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][00:06:43][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][00:07:56][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-05][00:07:56][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-05][00:08:03][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-05][00:08:03][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-05][00:09:04][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-05][00:09:04][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
