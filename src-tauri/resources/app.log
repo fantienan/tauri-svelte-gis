@@ -191,3 +191,16 @@
 [2025-03-05][00:08:03][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
 [2025-03-05][00:09:04][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
 [2025-03-05][00:09:04][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared
+[2025-03-05][22:34:55][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][22:36:17][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][22:46:55][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][22:53:52][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][22:53:52][tao::platform_impl::platform::keyboard][TRACE] Received a CHAR message but no `event_info` was available. The message is probably IME, returning.
+[2025-03-05][22:53:52][tao::platform_impl::platform::keyboard][TRACE] Received a CHAR message but no `event_info` was available. The message is probably IME, returning.
+[2025-03-05][22:53:52][tao::platform_impl::platform::keyboard][TRACE] Received a CHAR message but no `event_info` was available. The message is probably IME, returning.
+[2025-03-05][22:56:59][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][22:56:59][tauri_app_lib][INFO] Workspace initialized successfully
+[2025-03-05][22:58:47][tauri_app_lib][INFO] Init Window config injected successfully
+[2025-03-05][22:58:47][tauri_app_lib][INFO] Workspace initialized successfully
+[2025-03-05][22:59:21][tao::platform_impl::platform::event_loop::runner][WARN] NewEvents emitted without explicit RedrawEventsCleared
+[2025-03-05][22:59:21][tao::platform_impl::platform::event_loop::runner][WARN] RedrawEventsCleared emitted without explicit MainEventsCleared

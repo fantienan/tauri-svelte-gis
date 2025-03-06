@@ -17,7 +17,8 @@
     "tauri": "tauri",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
-    "tailwind": "npx tailwindcss -i ./src/app.css -o ./static/tailwind.css"
+    "tailwind": "npx tailwindcss -i ./src/app.css -o ./static/tailwind.css",
+    "binaries": "bun scripts/binaries.js"
   },
   "license": "MIT",
   "dependencies": {

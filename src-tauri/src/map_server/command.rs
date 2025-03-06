@@ -1,4 +1,6 @@
 use std::{path::Path, process::Command};
+use tauri_plugin_shell::ShellExt;
+use tauri_plugin_shell::process::CommandEvent;
 
 // use tokio::process::Command as TokioCommand;
 
@@ -79,8 +81,8 @@ where
     input_path,
     output_path,
     format_name: "MBTiles".to_string(),
-    min_zoom: None,
-    max_zoom: None,
+    min_zoom: Some(1),
+    max_zoom: Some(18),
     epsg: None,
   });
 
@@ -103,3 +105,38 @@ where
   Ok(())
 }
 
+pub fn start_server(app_handle:&tauri::AppHandle) -> Result<(), String> {
+  let shell = app_handle.shell();
+  let cmd = shell.sidecar("martin").map_err(|e| e.to_string())?;
+
+  let (mut rx, _) = cmd 
+    .arg("--version")
+    .spawn()
+    .map_err(|e| e.to_string())?;
+
+  // let mut app_handle_clone = app_handle.clone();
+
+  // 监听 node 进程的输出日志
+  tauri::async_runtime::spawn(async move {
+    while let Some(event) = rx.recv().await {
+      match event {
+        CommandEvent::Stdout(line) => {
+          match String::from_utf8(line) {
+            Ok(line_str) => log::info!("map server stdout: {:?}", line_str),
+            Err(e) => log::error!("map server stdout: {:?}", e),
+          }
+        }
+        CommandEvent::Stderr(line) => {
+          match String::from_utf8(line) {
+            Ok(line_str) => log::info!("map server stderr: {:?}", line_str),
+            Err(e) => log::error!("map server stderr: {:?}", e),
+          }
+        }
+        _ => {}
+      }
+    }
+  });
+
+  Ok(())
+
+}

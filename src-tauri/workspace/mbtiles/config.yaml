@@ -1,0 +1,24 @@
+keep_alive: 75
+listen_addresses: '0.0.0.0:3000'
+base_path: /tiles
+worker_processes: 8
+cache_size_mb: 1024
+preferred_encoding: gzip
+web_ui: disable
+pmtiles:
+  paths:
+    - /dir-path
+  sources:
+    # named source matching source name to a single file
+    pm-src1: /path/to/pmt.pmtiles
+
+# Publish MBTiles files
+mbtiles:
+  paths:
+    # scan this whole dir, matching all *.mbtiles files
+    - /dir-path
+    # specific mbtiles file will be published as mbtiles2 source
+    - /path/to/mbtiles.mbtiles
+  sources:
+    # named source matching source name to a single file
+    mb-src1: /path/to/mbtiles1.mbtiles
